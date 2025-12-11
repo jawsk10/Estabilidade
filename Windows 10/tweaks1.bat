@@ -201,8 +201,8 @@ reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Mem
 REM *** Acelerar desligamento ***
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "WaitToKillServiceTimeout" /t REG_SZ /d 2000 /f
 
-REM *** Habilitar todos os icones na tray***
-reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explore" /v "EnableAutoTray" /t REG_DWORD /d 0 /f
+REM *** Desabilitar todos os icones na tray ***
+reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explore" /v "EnableAutoTray" /t REG_DWORD /d 1 /f
 
 REM *** Tweaks Variados ***
 reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v "AutoEndTasks" /t REG_SZ /d 1 /f
@@ -386,8 +386,8 @@ REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /V Hiberbo
 REM *** Desabilitar Notificações Balão ***
 REG ADD "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /V EnableBalloonTips /T REG_dWORD /D 0 /F
 
-REM *** Mostrar todos os icones na area de notificação ***
-REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer" /V EnableAutoTray /T REG_DWORD /D 0 /F
+REM *** Ocultar todos os icones na area de notificação ***
+REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer" /V EnableAutoTray /T REG_DWORD /D 1 /F
 
 REM *** Desabilitar questões de segurança para contas locais ***
 REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System" /V NoLocalPasswordResetQuestion /T REG_DWORD /D 1 /F
@@ -411,7 +411,7 @@ Reg Add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v C
 Reg Add "HKCU\SOFTWARE\Microsoft\Windows\DWM" /v ColorPrevalence /t REG_DWORD /d 0 /f
 Reg Add "HKEY_CURRENT_USER\Control Panel\Desktop" /v AutoColorization /t REG_DWORD /d 0 /f
 
-REM *** Desabilitar hibernação HD/SSD e demais configs de energia***
+REM *** Desabilitar hibernação HD/SSD e demais configs de energia ***
 ECHO Esquema Balanceado
 powercfg -SETACTIVE 381b4222-f694-41f0-9685-ff5bb260df2e
 ECHO Marcando configurações na bateria como nunca
@@ -422,31 +422,12 @@ ECHO Marcando configurações na tomada como nunca
 powercfg.exe -change -monitor-timeout-ac 15
 powercfg.exe -change -standby-timeout-ac 0
 powercfg.exe -change -hibernate-timeout-ac 0
-ECHO Não mexer no brilho do monitor
-powercfg -SETDCVALUEINDEX SCHEME_CURRENT 7516b95f-f776-4464-8c53-06167f40cc99 17aaa29b-8b43-4b94-aafe-35f64daaf1ee 0
-powercfg -SETACVALUEINDEX SCHEME_CURRENT 7516b95f-f776-4464-8c53-06167f40cc99 17aaa29b-8b43-4b94-aafe-35f64daaf1ee 0
-ECHO Ao fechar a tampa. Na tomada nada e na bateria adormecer
-powercfg -SETACVALUEINDEX SCHEME_CURRENT 4f971e89-eebd-4455-a8de-9e59040e7347 5ca83367-6e45-459f-a27b-476b1d01c936 0
-powercfg -SETDCVALUEINDEX SCHEME_CURRENT 4f971e89-eebd-4455-a8de-9e59040e7347 5ca83367-6e45-459f-a27b-476b1d01c936 3
 ECHO Ao apertar o botão de desligar, desligar e não adormecer
 powercfg -SETACVALUEINDEX SCHEME_CURRENT 4f971e89-eebd-4455-a8de-9e59040e7347 7648efa3-dd9c-4e3e-b566-50f929386280 3
 powercfg -SETDCVALUEINDEX SCHEME_CURRENT 4f971e89-eebd-4455-a8de-9e59040e7347 7648efa3-dd9c-4e3e-b566-50f929386280 3
 ECHO Desabilitar hibernação de HD/SSD
 powercfg /SETDCVALUEINDEX SCHEME_CURRENT 0012ee47-9041-4b5d-9b77-535fba8b1442 6738e2c4-e8a5-4a42-b16a-e040e769756e 0
 powercfg /SETACVALUEINDEX SCHEME_CURRENT 0012ee47-9041-4b5d-9b77-535fba8b1442 6738e2c4-e8a5-4a42-b16a-e040e769756e 0
-
-REM *** Desinstalar OneDrive ***
-REM start /wait "" "%SYSTEMROOT%\SYSWOW64\ONEDRIVESETUP.EXE" /UNINSTALL
-REM rd C:\OneDriveTemp /Q /S >NUL 2>&1
-REM rd "%USERPROFILE%\OneDrive" /Q /S >NUL 2>&1
-REM rd "%LOCALAPPDATA%\Microsoft\OneDrive" /Q /S >NUL 2>&1
-REM rd "%PROGRAMDATA%\Microsoft OneDrive" /Q /S >NUL 2>&1
-REM reg add "HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}\ShellFolder" /f /v Attributes /t REG_DWORD /d 0 >NUL 2>&1
-REM reg add "HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}\ShellFolder" /f /v Attributes /t REG_DWORD /d 0 >NUL 2>&1
-REM echo OneDrive has been removed. Windows Explorer needs to be restarted.
-REM pause
-REM start /wait TASKKILL /F /IM explorer.exe
-REM start explorer.exe.
 
 REM *** Instalar .NET Framework 3.5 ***
 Dism /online /norestart /Enable-Feature /FeatureName:"NetFx3"
@@ -514,7 +495,7 @@ REG ADD "HKEY_CURRENT_USER\Control Panel\Colors" /v Background /t REG_SZ /d "1 1
 REM *** Desabilitar pastas especiais, como Música ***
 REG ADD "HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell" /V FolderType /T REG_SZ /D NotSpecified /F
 
-REM *** Desabilitar Windows Defender***
+REM *** Desabilitar Windows Defender ***
 REM REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v DisableAntiSpyware /d 1 /t REG_DWORD /f
 REM REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /f
 REM REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /v DisableBehaviorMonitoring /d 1 /t REG_DWORD /f
@@ -551,15 +532,9 @@ REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search" 
 
 REM *** Desabilitar escrita de Cache de navegadores e streaming ***
 taskkill /f /im msedge.exe
-REM Vivaldi
-del /s /q "%userprofile%\AppData\Local\Vivaldi\User Data\Default\Cache"
-icacls "%userprofile%\AppData\Local\Vivaldi\User Data\Default\Cache" /deny *S-1-1-0:(F)
 REM Google Chrome
 del /s /q "%userprofile%\AppData\Local\Google\Chrome\User Data\Default\Cache"
 icacls "%userprofile%\AppData\Local\Google\Chrome\User Data\Default\Cache" /deny *S-1-1-0:(F)
-REM Opera
-del /s /q "%userprofile%\AppData\Local\Opera Software\Opera Stable\Cache"
-icacls "%userprofile%\AppData\Local\Opera Software\Opera Stable\Cache" /deny *S-1-1-0:(F)
 REM Microsoft Edge
 del /s /q "%userprofile%\AppData\Local\Microsoft\Edge\User Data\Default\Cache"
 icacls "%userprofile%\AppData\Local\Microsoft\Edge\User Data\Default\Cache" /deny *S-1-1-0:(F)
@@ -567,23 +542,9 @@ REM Mozilla Firefox
 cd "%userprofile%\AppData\Local\Mozilla\Firefox\Profiles\*default-release"
 del /s /q cache2
 icacls cache2 /deny *S-1-1-0:(F)
-REM Vivaldi Portable
-del /s /q "D:Programas\Vivaldi\User Data\Default\Cache"
-icacls "D:Programas\Vivaldi\User Data\Default\Cache" /deny *S-1-1-0:(F)
-REM Opera Portable
-del /s /q "D:\Programas\Opera\profile\data\Cache"
-icacls "D:\Programas\Opera\profile\data\Cache" /deny *S-1-1-0:(F)
-REM Tidal
-del /s /q "%userprofile%\AppData\Roaming\TIDAL\Cache"
-icacls "%userprofile%\AppData\Roaming\TIDAL\Cache" /deny *S-1-1-0:(F)
 REM Spotify
 del /s /q "%LocalAppData%\Spotify\Storage"
 icacls "%%LocalAppData%\Spotify\Storage" /deny *S-1-1-0:(F)
-REM Qobuz
-del /s /q "%userprofile%\AppData\Roaming\Qobuz\Cache"
-icacls "%userprofile%\AppData\Roaming\Qobuz\Cache" /deny *S-1-1-0:(F)
-del /s /q "%userprofile%\AppData\Roaming\Qobuz\tmp\Cache"
-icacls "%userprofile%\AppData\Roaming\Qobuz\tmp\Cache" /deny *S-1-1-0:(F)
 
 REM *** Desabilitar Cliente DNS ***
 REM reg add "HKLM\SYSTEM\CurrentControlSet\services\Dnscache" /v Start /t REG_DWORD /d 4 /f
@@ -651,5 +612,4 @@ TIMEOUT /T 5
 taskkill /f /im explorer.exe
 start explorer.exe
 msg %username% Otimizacao Finalizada com Sucesso
-
 
