@@ -467,9 +467,6 @@ REM *** Tiles transparentes no Iniciar ***
 Reg Add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FeatureManagement\Overrides\0\2093230218" /v EnabledState /t REG_DWORD /d 2 /f
 Reg Add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FeatureManagement\Overrides\0\2093230218" /v EnabledStateOptions /t REG_DWORD /d 0 /f
 
-REM *** Inserir 5 abas mais recentes do Edge no Alt-Tab ***
-Reg Add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v EnabledState /t REG_DWORD /d 1 /f
-
 REM *** Desabilitar Power Throttling ***
 REG ADD "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power\PowerThrottling" /V PowerThrottlingOff /T REG_DWORD /D 1 /F
 
@@ -500,13 +497,6 @@ reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeli
 reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SubscribedContent-353694Enabled" /t REG_DWORD /d 0 /f
 reg add "SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "DisableWindowsConsumerFeatures" /t REG_DWORD /d 1 /f
 
-REM ***Instalar MVPS HOSTS (Desabilita propagandas e rastreadores)***
-REM Powershell -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/robledosm/update-mvpsHosts/master/update-mvpsHosts.ps1'))"
-REM Powershell -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/W4RH4WK/Debloat-Windows-10/master/scripts/block-telemetry.ps1'))"
-REM ipconfig /flushdns
-rem reg add "HKLM\SYSTEM\CurrentControlSet\services\Dnscache\Parameters" /v "MaxNegativeCacheTtl" /t "REG_DWORD" /d "0" /f
-rem reg add "HKLM\SYSTEM\CurrentControlSet\services\Dnscache\Parameters" /v "MaxCacheTtl" /t "REG_DWORD" /d "1" /f
-
 REM *** Desabilitar reserva de armazenamento ***
 Reg Add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager" /v ShippedWithReserves /t REG_DWORD /d 0 /f
 Reg Add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager" /v PassedPolicy /t REG_DWORD /d 0 /f
@@ -517,9 +507,6 @@ REM REG ADD "HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v DisableNotifi
 REM *** Desabilitar aplicativos em segundo plano ***
 Reg Add HKCU\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications /v GlobalUserDisabled /t REG_DWORD /d 1 /f
 Reg Add HKCU\Software\Microsoft\Windows\CurrentVersion\Search /v BackgroundAppGlobalToggle /t REG_DWORD /d 0 /f
-
-REM *** Desabilitar Esconder itens na bandeja do sistema ***
-REG ADD HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer /v NoAutoTrayNotify /d 1 /t REG_DWORD /f
 
 REM *** Background em Cor Sólida ***
 REG ADD "HKEY_CURRENT_USER\Control Panel\Colors" /v Background /t REG_SZ /d "1 133 116" /f
@@ -660,113 +647,8 @@ reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenari
 REM *** Desabilitar VBS ***
 REG ADD "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\DeviceGuard" /v EnableVirtualizationBasedSecurity /d 0 /t REG_DWORD /f
 
-REM ***Instalar Clientes de Jogos ***
-REM winget install EpicGames.EpicGamesLauncher -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install GOG.Galaxy -h -s winget --accept-source-agreements --accept-package-agreements
-REM winget install ElectronicArts.EADesktop -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install Valve.Steam -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install Ubisoft.Connect -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install Amazon.Games -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install Playnite.Playnite -s winget -h --accept-source-agreements --accept-package-agreements
-
-REM ***Instalar Frameworks ***
-
-rem winget install Microsoft.DotNet.DesktopRuntime.3_1 -s winget -h --accept-source-agreements --accept-package-agreements
-rem winget install Microsoft.DotNet.DesktopRuntime.5 -s winget -h --accept-source-agreements --accept-package-agreements
-rem winget install Microsoft.DotNet.DesktopRuntime.6 -s winget -h --accept-source-agreements --accept-package-agreements
-
-REM ***Instalar Emuladores***
-REM cinst cemu -y
-REM winget install DolphinEmu.DolphinEmu -s winget -h --accept-source-agreements --accept-package-agreements
-REM cinst fs-uae -y
-REM cinst mame -y
-REM cinst nestopia -y
-REM winget install PPSSPPTeam.PPSSPP -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install Libretro.RetroArch -s winget -h --accept-source-agreements --accept-package-agreements
-REM cinst snes9x -y
-REM cinst visualboyadvance -y
-REM cinst winvice -y
-
-REM ***Instalar Drivers***
-REM cinst intel-chipset-device-software -y
-REM cinst intel-graphics-driver -y
-REM cinst intel-rst-driver -y
-REM cinst nvidia-display-driver -y
-REM cinst realtek-s winget -h --accept-source-agreements --accept-package-agreementsd-audio-driver -y
-REM winget install AMD.RyzenMaster -s winget -h --accept-source-agreements --accept-package-agreements
-
-REM ***Instalar Navegadores e Programas para Internet***
-REM winget install eloston.ungoogled-chromium -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install Dropbox.Dropbox -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install KDE.Falkon -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install Mozilla.Firefox -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install Opera.Opera -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install PicoTorrent.PicoTorrent -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install VivaldiTechnologies.Vivaldi -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install Microsoft.OneDrive -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install TIDALMusicAS.TIDAL -s winget -h --accept-source-agreements --accept-package-agreements
-
-REM ***Instalar Aplicativos***
-rem winget install Files-Community.Files -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install calibre.calibre -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install PeterPawlowski.foobar2000 -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install IrfanSkiljan.IrfanView -s winget -h --accept-source-agreements --accept-package-agreements
-REM cinst kis -y
-REM winget install XBMCFoundation.Kodi -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install CodeJelly.Launchy -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install LibreOffice.LibreOffice -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install MacType.MacType -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install Henry++.MemReduct -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install MKVToolNix.MKVToolNix -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install clsid2.mpc -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install 9PD88QB3BGKN -s msstore -h --accept-source-agreements --accept-package-agreements & rem mpc-be
-REM cinst msiafterburner -y
-REM winget install Notepad++.Notepad++ -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install Microsoft.Office -s winget -h --accept-source-agreements --accept-package-agreements
-REM cinst oldcalc -y
-REM cinst openal -y
-REM winget install 9NBHCS1LX4R0 -s msstore -h --accept-source-agreements --accept-package-agreements & rem paint.net
-REM winget install QL-Win.QuickLook -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install QuiteRSS.QuiteRSS -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install PunkLabs.RocketDock -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install Piriform.Speccy -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install SumatraPDF.SumatraPDF -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install RandomEngy.VidCoder -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install VideoLAN.VLC -s winget -h --accept-source-agreements --accept-package-agreements
-REM cinst windowblinds -y
-REM winget install Microsoft.winfile -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install 9NBLGGH404XM -s msstore -h --accept-source-agreements --accept-package-agreements & rem xplorer² lite
-REM winget install ModernFlyouts.ModernFlyouts -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install Files-Community.Files -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install Open-Shell.Open-Shell-Menu -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install t1m0thyj.WinDynamicDesktop -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install File-New-Project.EarTrumpet -s winget -h --accept-source-agreements --accept-package-agreements
-
-REM ***Instalar Utilitários***
-REM winget install 7zip.7zip -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install 7zip.7zipAlpha -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install BleachBit.BleachBit -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install Piriform.CCleaner -s winget -h --accept-source-agreements --accept-package-agreements
-REM cinst compactgui -y
-REM winget install CPUID.CPU-Z -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install Piriform.Defraggler -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install Microsoft.DirectX -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install ESET.Nod32 -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install ESET.Security -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install flux.flux -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install TechPowerUp.GPU-Z -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install REALiX.HWiNFO -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install Microsoft.PowerToys -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install Rainmeter.Rainmeter -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install Piriform.Recuva -s winget -h --accept-source-agreements --accept-package-agreements
-REM cinst regscanner -y
-REM winget install den4b.ReNamer -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install AntibodySoftware.WizTree -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install Microsoft.WindowsTerminal -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install Lexikos.AutoHotkey -s winget -h --accept-source-agreements --accept-package-agreements
-REM winget install CodeSector.TeraCopy -s winget -h --accept-source-agreements --accept-package-agreements
-
 TIMEOUT /T 5
 taskkill /f /im explorer.exe
 start explorer.exe
 msg %username% Otimizacao Finalizada com Sucesso
+
