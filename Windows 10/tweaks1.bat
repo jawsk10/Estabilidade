@@ -411,23 +411,44 @@ Reg Add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWAR
 Reg Add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\DWM" /v ColorPrevalence /t REG_DWORD /d 0 /f
 Reg Add "HKEY_CURRENT_USER\Control Panel\Desktop" /v AutoColorization /t REG_DWORD /d 0 /f
 
-REM *** Desabilitar hibernação HD/SSD e demais configs de energia ***
-ECHO Esquema Balanceado
-powercfg -SETACTIVE 381b4222-f694-41f0-9685-ff5bb260df2e
-ECHO Marcando configurações na bateria como nunca
-powercfg.exe -change -monitor-timeout-dc 5
-powercfg.exe -change -standby-timeout-dc 15
-powercfg.exe -change -hibernate-timeout-dc 0
-ECHO Marcando configurações na tomada como nunca
+REM *** Desabilitar hibernacao HD/SSD e demais configs de energia ***
+ECHO Criando o novo plano Desempenho Maximo
+for /f "tokens=3" %%a in ('powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61') do set GUIDMAX=%%a
+
+ECHO Ativando o plano Desempenho Maximo
+powercfg -setactive %GUIDMAX%
+
+ECHO Marcando configuracoes na tomada
 powercfg.exe -change -monitor-timeout-ac 15
 powercfg.exe -change -standby-timeout-ac 0
 powercfg.exe -change -hibernate-timeout-ac 0
-ECHO Ao apertar o botão de desligar, desligar e não adormecer
-powercfg -SETACVALUEINDEX SCHEME_CURRENT 4f971e89-eebd-4455-a8de-9e59040e7347 7648efa3-dd9c-4e3e-b566-50f929386280 3
-powercfg -SETDCVALUEINDEX SCHEME_CURRENT 4f971e89-eebd-4455-a8de-9e59040e7347 7648efa3-dd9c-4e3e-b566-50f929386280 3
-ECHO Desabilitar hibernação de HD/SSD
-powercfg /SETDCVALUEINDEX SCHEME_CURRENT 0012ee47-9041-4b5d-9b77-535fba8b1442 6738e2c4-e8a5-4a42-b16a-e040e769756e 0
-powercfg /SETACVALUEINDEX SCHEME_CURRENT 0012ee47-9041-4b5d-9b77-535fba8b1442 6738e2c4-e8a5-4a42-b16a-e040e769756e 0
+
+ECHO Ao apertar o botao de desligar, desligar e nao adormecer
+powercfg -setacvalueindex SCHEME_CURRENT 49791e89-eebd-4455-a8de-9e59040e7347 7648efa3-dd9c-4e3e-b566-50f929386280 3
+
+ECHO Desabilitar hibernacao de HD/SSD
+powercfg -setacvalueindex SCHEME_CURRENT 0012ee47-9041-4b5d-9b77-535fbab8b1442 6738e2c4-e8a5-4a42-b16a-e040e769756e 0
+
+REM ================================
+REM Remover todos os planos exceto o GUIDMAX
+REM ================================
+
+ECHO Listando planos atuais...
+powercfg /list > "%temp%\planos.txt"
+
+ECHO Removendo planos que nao sejam o Desempenho Maximo...
+
+for /f "tokens=3" %%g in ('findstr /i "GUID" "%temp%\planos.txt"') do (
+    if /i NOT "%%g"=="%GUIDMAX%" (
+        echo Removendo plano %%g ...
+        powercfg -delete %%g
+    ) else (
+        echo Mantendo plano principal %%g
+    )
+)
+
+ECHO Concluido! Plano Desempenho Maximo ativo e unico restante.
+
 
 REM *** Instalar .NET Framework 3.5 ***
 Dism /online /norestart /Enable-Feature /FeatureName:"NetFx3"
@@ -508,7 +529,7 @@ REG ADD "HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer" /v Hide
 REM *** Desabilitar Assistência Remota ***
 REG ADD "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Remote Assistance" /v fAllowToGetHelp /d 0 /t REG_DWORD /f
 
-REM *** Habiltar agendamento de aceleração de GPU ***
+REM *** Habilitar agendamento de aceleração de GPU ***
 REG ADD "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v HwSchMode /d 2 /t REG_DWORD /f
 
 REM *** Desabilitar Histórico do Acesso Rápido ***
@@ -611,4 +632,5 @@ TIMEOUT /T 5
 taskkill /f /im explorer.exe
 start explorer.exe
 msg %username% Otimizacao Finalizada com Sucesso
+
 
