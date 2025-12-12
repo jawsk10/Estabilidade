@@ -450,10 +450,8 @@ Reg Add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWAR
 Reg Add "HKEY_CURRENT_USER\Control Panel\Desktop" /v AutoColorization /t REG_DWORD /d 0 /f
 
 REM *** Plano de Energia ***
-ECHO Criando plano de energia
-powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
-ECHO Desempenho Maximo
-powercfg -setactive e9a42b02-d5df-448d-aa00-03f14749eb61
+ECHO Alto Desempenho
+powercfg -setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
 ECHO Marcando configuraçoes na tomada
 powercfg.exe -change -monitor-timeout-ac 0
 powercfg.exe -change -standby-timeout-ac 0
@@ -464,9 +462,6 @@ powercfg /SETACVALUEINDEX SCHEME_CURRENT 0012ee47-9041-4b5d-9b77-535fba8b1442 67
 ECHO Desabilitar supensao seletiva de usb
 powercfg /SETDCVALUEINDEX SCHEME_CURRENT 2a737441-1930-4402-8d77-b2bebba308a3 48e6b7a6-50f5-4782-a5d4-53bb8f07e226 0
 powercfg /SETACVALUEINDEX SCHEME_CURRENT 2a737441-1930-4402-8d77-b2bebba308a3 48e6b7a6-50f5-4782-a5d4-53bb8f07e226 0
-ECHO Desabilitar ociosidade do processador
-powercfg /SETDCVALUEINDEX SCHEME_CURRENT 54533251-82be-4824-96c1-47b60b740d00 4b92d758-5a24-4851-a470-815d78aee119 0
-powercfg /SETACVALUEINDEX SCHEME_CURRENT 54533251-82be-4824-96c1-47b60b740d00 7b224883-b3cc-4d79-819f-8374152cbe7c 0
 
 REM *** Instalar .NET Framework 3.5 ***
 Dism /online /norestart /Enable-Feature /FeatureName:"NetFx3"
@@ -670,6 +665,7 @@ REG ADD "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\DeviceGuard" /v Ena
 TIMEOUT /T 5
 taskkill /f /im explorer.exe
 start explorer.exe
+
 
 
 
