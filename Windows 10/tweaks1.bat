@@ -1,3 +1,23 @@
+@ECHO OFF
+SETLOCAL ENABLEEXTENSIONS ENABLEDELAYEDEXPANSION
+cd /D "%~dp0"
+
+IF EXIST "C:\Windows\system32\adminrightstest" (
+rmdir C:\Windows\system32\adminrightstest
+)
+mkdir C:\Windows\system32\adminrightstest
+if %errorlevel% neq 0 (
+POWERSHELL "Start-Process \"%~nx0\" -Verb RunAs"
+if !errorlevel! neq 0 (
+POWERSHELL "Start-Process '%~nx0' -Verb RunAs"
+if !errorlevel! neq 0 (
+ECHO You should run this script as Admin in order to allow system changes
+)
+)
+exit
+)
+rmdir C:\Windows\system32\adminrightstest
+
 chcp 65001
 @rem *** Desabilitar alguns serviços ***
 sc stop DiagTrack
@@ -359,6 +379,16 @@ REM *** Tweaks para Estabilidade ***
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\PriorityControl" /v "Win32PrioritySeparation" /t REG_DWORD /d 38 /f
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex" /t REG_DWORD /d 4294967295 /f
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "SystemResponsiveness" /t REG_DWORD /d 10 /f
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\csrss.exe" /v "CpuPriorityClass" /t REG_DWORD /d 3 /f
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\csrss.exe" /v "IoPriority" /t REG_DWORD /d 3 /f
+
+REM *** Desabilitar Spectre and Meltdown ***
+REG ADD "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management" /v "EnableCfg" /t REG_DWORD /d "0" /f >NUL 2>&1
+REG ADD "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettings" /t REG_DWORD /d "1" /f >NUL 2>&1
+REG ADD "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverride" /t REG_DWORD /d "3" /f >NUL 2>&1
+REG ADD "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverrideMask" /t REG_DWORD /d "3" /f >NUL 2>&1
+REN C:\Windows\System32\mcupdate_GenuineIntel.dll mcupdate_GenuineIntel.dlll >NUL 2>&1
+REN C:\Windows\System32\mcupdate_AuthenticAMD.dll mcupdate_AuthenticAMD.dlll >NUL 2>&1
 
 REM *** Desabilitar Delay de Inicialização ***
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Serialize" /v "Startupdelayinmsec" /t REG_DWORD /d 0 /f
@@ -632,12 +662,4 @@ REG ADD "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\DeviceGuard" /v Ena
 TIMEOUT /T 5
 taskkill /f /im explorer.exe
 start explorer.exe
-msg %username% Otimizacao Finalizada com Sucesso
-
-
-
-
-
-
-
 
