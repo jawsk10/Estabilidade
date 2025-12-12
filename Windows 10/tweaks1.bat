@@ -411,44 +411,21 @@ Reg Add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWAR
 Reg Add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\DWM" /v ColorPrevalence /t REG_DWORD /d 0 /f
 Reg Add "HKEY_CURRENT_USER\Control Panel\Desktop" /v AutoColorization /t REG_DWORD /d 0 /f
 
-REM *** Desabilitar hibernacao HD/SSD e demais configs de energia ***
-ECHO Criando o novo plano Desempenho Maximo
-for /f "tokens=3" %%a in ('powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61') do set GUIDMAX=%%a
-
-ECHO Ativando o plano Desempenho Maximo
-powercfg -setactive %GUIDMAX%
-
-ECHO Marcando configuracoes na tomada
-powercfg.exe -change -monitor-timeout-ac 15
+REM *** Plano de Energia ***
+ECHO Criando plano de energia
+powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
+ECHO Desempenho Maximo
+powercfg -setactive e9a42b02-d5df-448d-aa00-03f14749eb61
+ECHO Marcando configurações na tomada
+powercfg.exe -change -monitor-timeout-ac 0
 powercfg.exe -change -standby-timeout-ac 0
 powercfg.exe -change -hibernate-timeout-ac 0
-
-ECHO Ao apertar o botao de desligar, desligar e nao adormecer
-powercfg -setacvalueindex SCHEME_CURRENT 49791e89-eebd-4455-a8de-9e59040e7347 7648efa3-dd9c-4e3e-b566-50f929386280 3
-
-ECHO Desabilitar hibernacao de HD/SSD
-powercfg -setacvalueindex SCHEME_CURRENT 0012ee47-9041-4b5d-9b77-535fbab8b1442 6738e2c4-e8a5-4a42-b16a-e040e769756e 0
-
-REM ================================
-REM Remover todos os planos exceto o GUIDMAX
-REM ================================
-
-ECHO Listando planos atuais...
-powercfg /list > "%temp%\planos.txt"
-
-ECHO Removendo planos que nao sejam o Desempenho Maximo...
-
-for /f "tokens=3" %%g in ('findstr /i "GUID" "%temp%\planos.txt"') do (
-    if /i NOT "%%g"=="%GUIDMAX%" (
-        echo Removendo plano %%g ...
-        powercfg -delete %%g
-    ) else (
-        echo Mantendo plano principal %%g
-    )
-)
-
-ECHO Concluido! Plano Desempenho Maximo ativo e unico restante.
-
+ECHO Desabilitar hibernação de HD/SSD
+powercfg /SETDCVALUEINDEX SCHEME_CURRENT 0012ee47-9041-4b5d-9b77-535fba8b1442 6738e2c4-e8a5-4a42-b16a-e040e769756e 0
+powercfg /SETACVALUEINDEX SCHEME_CURRENT 0012ee47-9041-4b5d-9b77-535fba8b1442 6738e2c4-e8a5-4a42-b16a-e040e769756e 0
+ECHO Desabilitar supensão seletiva de usb
+powercfg /SETDCVALUEINDEX SCHEME_CURRENT 2a737441-1930-4402-8d77-b2bebba308a3 48e6b7a6-50f5-4782-a5d4-53bb8f07e226 0
+powercfg /SETACVALUEINDEX SCHEME_CURRENT 2a737441-1930-4402-8d77-b2bebba308a3 48e6b7a6-50f5-4782-a5d4-53bb8f07e226 0
 
 REM *** Instalar .NET Framework 3.5 ***
 Dism /online /norestart /Enable-Feature /FeatureName:"NetFx3"
@@ -632,5 +609,6 @@ TIMEOUT /T 5
 taskkill /f /im explorer.exe
 start explorer.exe
 msg %username% Otimizacao Finalizada com Sucesso
+
 
 
