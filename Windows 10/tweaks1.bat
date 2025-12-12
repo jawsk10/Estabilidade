@@ -471,8 +471,10 @@ powercfg /SETACVALUEINDEX SCHEME_CURRENT 54533251-82be-4824-96c1-47b60b740d00 7b
 REM *** Instalar .NET Framework 3.5 ***
 Dism /online /norestart /Enable-Feature /FeatureName:"NetFx3"
 
-REM *** Instalar DirectPlay (importante para jogos 2D antigos) ***
+REM *** Instalar Componente Legado ***
+Dism /online /norestart /Enable-Feature /FeatureName:"LegacyComponents"
 
+REM *** Instalar DirectPlay (importante para jogos 2D antigos) ***
 Dism /online /norestart /Enable-Feature /FeatureName:"DirectPlay"
 
 REM *** Dark Mode Janelas Win32 ***
@@ -668,6 +670,7 @@ REG ADD "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\DeviceGuard" /v Ena
 TIMEOUT /T 5
 taskkill /f /im explorer.exe
 start explorer.exe
+
 
 
 
