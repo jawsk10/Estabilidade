@@ -27,6 +27,7 @@ sc stop RemoteRegistry
 sc stop TrkWks
 sc stop WMPNetworkSvc
 sc stop SysMain
+sc stop wuauserv
 sc stop lmhosts
 sc stop VSS
 sc stop RemoteAccess
@@ -75,6 +76,7 @@ sc config RemoteRegistry start= disabled
 sc config TrkWks start= disabled
 sc config WMPNetworkSvc start= disabled
 sc config SysMain start= disabled
+sc config wuauserv start= disabled
 sc config lmhosts start= disabled
 sc config VSS start= disabled
 sc config RemoteAccess start= disabled
@@ -665,6 +667,7 @@ REG ADD "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\DeviceGuard" /v Ena
 TIMEOUT /T 5
 taskkill /f /im explorer.exe
 start explorer.exe
+
 
 
 
