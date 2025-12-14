@@ -395,6 +395,7 @@ REM *** Tweaks para Bcdedit ***
 bcdedit /set useplatformtick yes
 bcdedit /set disabledynamictick yes
 bcdedit /set tscsyncpolicy enhanced
+bcdedit /deletevalue useplatformclock
 
 REM *** Desabilitar Spectre and Meltdown ***
 REG ADD "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management" /v "EnableCfg" /t REG_DWORD /d "0" /f
@@ -685,5 +686,6 @@ REG ADD "HKLM\System\CurrentControlSet\Control\DeviceGuard" /v "EnableVirtualiza
 TIMEOUT /T 5
 taskkill /f /im explorer.exe
 start explorer.exe
+
 
 
