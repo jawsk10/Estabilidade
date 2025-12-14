@@ -119,37 +119,37 @@ sc config BITS start= demand
 sc config DPS start= disabled
 
 REM *** Tweaks de tarefas agendadas ***
-schtasks /Change /TN "Microsoft\Windows\AppID\SmartScreenSpecific" /Disable
-schtasks /Change /TN "Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" /Disable
-schtasks /Change /TN "Microsoft\Windows\Application Experience\ProgramDataUpdater" /Disable
-schtasks /Change /TN "Microsoft\Windows\Application Experience\StartupAppTask" /Disable
-schtasks /Change /TN "Microsoft\Windows\Autochk\Proxy" /Disable
-schtasks /Change /TN "Microsoft\Windows\Customer Experience Improvement Program\Consolidator" /Disable
-schtasks /Change /TN "Microsoft\Windows\Customer Experience Improvement Program\KernelCeipTask" /Disable
-schtasks /Change /TN "Microsoft\Windows\Customer Experience Improvement Program\UsbCeip" /Disable
-schtasks /Change /TN "Microsoft\Windows\Customer Experience Improvement Program\Uploader" /Disable
-schtasks /Change /TN "Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector" /Disable
-schtasks /Change /TN "Microsoft\Windows\Maintenance\WinSAT" /Disable
-schtasks /Change /TN "Microsoft\Windows\Shell\FamilySafetyUpload" /Disable
-schtasks /Change /TN "Microsoft\Windows\SystemRestore\SR" /Disable
-schtasks /Change /TN "Microsoft\Office\Office Automatic Updates 2.0" /Disable
-schtasks /Change /TN "Microsoft\Office\Office ClickToRun Service Monitor" /Disable
-schtasks /Change /TN "Microsoft\Office\Office Feature Updates" /Disable
-schtasks /Change /TN "Microsoft\Office\Office Feature Updates Logon" /Disable
-schtasks /Change /TN "\Microsoft\Windows\Power Efficiency Diagnostics\AnalyzeSystem" /Disable
-schtasks /Change /TN "MicrosoftEdgeUpdateTaskMachineCore" /Disable
-schtasks /Change /TN "MicrosoftEdgeUpdateTaskMachineUA" /Disable
-schtasks /Change /TN "Microsoft\Windows\Autochk\Proxy" /Disable
-schtasks /Change /TN "Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector" /Disable
-schtasks /Change /TN "Microsoft\Windows\FileHistory\File History (maintenance mode)" /Disable
-schtasks /Change /TN "Microsoft\Windows\Maintenance\WinSAT" /Disable
-schtasks /Change /TN "Microsoft\Windows\CloudExperienceHost\CreateObjectTask" /Disable
-schtasks /Change /TN "Microsoft\Windows\DiskFootprint\Diagnostics" /Disable *** Not sure if should be disabled, maybe related to S.M.A.R.T.
-schtasks /Change /TN "Microsoft\Windows\NetTrace\GatherNetworkInfo" /Disable
-schtasks /Change /TN "Microsoft\Windows\PI\Sqm-Tasks" /Disable
-schtasks /Change /TN "Microsoft\Windows\Time Synchronization\ForceSynchronizeTime" /Disable
-schtasks /Change /TN "Microsoft\Windows\Time Synchronization\SynchronizeTime" /Disable
-schtasks /Change /TN "Microsoft\Windows\Windows Error Reporting\QueueReporting" /Disable
+schtasks /Change /tN "Microsoft\Windows\AppID\SmartScreenSpecific" /Disable
+schtasks /Change /tN "Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" /Disable
+schtasks /Change /tN "Microsoft\Windows\Application Experience\ProgramDataUpdater" /Disable
+schtasks /Change /tN "Microsoft\Windows\Application Experience\StartupAppTask" /Disable
+schtasks /Change /tN "Microsoft\Windows\Autochk\Proxy" /Disable
+schtasks /Change /tN "Microsoft\Windows\Customer Experience Improvement Program\Consolidator" /Disable
+schtasks /Change /tN "Microsoft\Windows\Customer Experience Improvement Program\KernelCeipTask" /Disable
+schtasks /Change /tN "Microsoft\Windows\Customer Experience Improvement Program\UsbCeip" /Disable
+schtasks /Change /tN "Microsoft\Windows\Customer Experience Improvement Program\Uploader" /Disable
+schtasks /Change /tN "Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector" /Disable
+schtasks /Change /tN "Microsoft\Windows\Maintenance\WinSAT" /Disable
+schtasks /Change /tN "Microsoft\Windows\Shell\FamilySafetyUpload" /Disable
+schtasks /Change /tN "Microsoft\Windows\SystemRestore\SR" /Disable
+schtasks /Change /tN "Microsoft\Office\Office Automatic Updates 2.0" /Disable
+schtasks /Change /tN "Microsoft\Office\Office ClickToRun Service Monitor" /Disable
+schtasks /Change /tN "Microsoft\Office\Office Feature Updates" /Disable
+schtasks /Change /tN "Microsoft\Office\Office Feature Updates Logon" /Disable
+schtasks /Change /tN "\Microsoft\Windows\Power Efficiency Diagnostics\AnalyzeSystem" /Disable
+schtasks /Change /tN "MicrosoftEdgeUpdateTaskMachineCore" /Disable
+schtasks /Change /tN "MicrosoftEdgeUpdateTaskMachineUA" /Disable
+schtasks /Change /tN "Microsoft\Windows\Autochk\Proxy" /Disable
+schtasks /Change /tN "Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector" /Disable
+schtasks /Change /tN "Microsoft\Windows\FileHistory\File History (maintenance mode)" /Disable
+schtasks /Change /tN "Microsoft\Windows\Maintenance\WinSAT" /Disable
+schtasks /Change /tN "Microsoft\Windows\CloudExperienceHost\CreateObjectTask" /Disable
+schtasks /Change /tN "Microsoft\Windows\DiskFootprint\Diagnostics" /Disable *** Not sure if should be disabled, maybe related to S.M.A.R.T.
+schtasks /Change /tN "Microsoft\Windows\NetTrace\GatherNetworkInfo" /Disable
+schtasks /Change /tN "Microsoft\Windows\PI\Sqm-Tasks" /Disable
+schtasks /Change /tN "Microsoft\Windows\Time Synchronization\ForceSynchronizeTime" /Disable
+schtasks /Change /tN "Microsoft\Windows\Time Synchronization\SynchronizeTime" /Disable
+schtasks /Change /tN "Microsoft\Windows\Windows Error Reporting\QueueReporting" /Disable
 
 REM *** Desabilitar Ultimo Acesso Arquivos ***
 
@@ -246,7 +246,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v "WaitToKillServiceTimeout" /t
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "DisableThumbnails" /t REG_DWORD /d 1 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "FolderContentsInfoTip" /t REG_DWORD /d 0 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ShowEncryptCompressedColor" /t REG_DWORD /d 0 /f
-REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /V ShowInfoTip /T REG_DWORD /D 0 /F
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v ShowInfoTip /t REG_DWORD /D 0 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ShowPreviewHandlers" /t REG_DWORD /d 0 /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableFirstLogonAnimation" /t REG_DWORD /d 0 /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v "EnableFirstLogonAnimation" /t REG_DWORD /d 0 /f
@@ -259,14 +259,14 @@ reg add "HKCU\Control Panel\Desktop" /v "VisualFXSetting" /t REG_DWORD /d 3 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Control Panel\Desktop" /v "UserPreferencesMask" /t REG_BINARY /d 9032078010000000 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Control Panel\Desktop\WindowMetrics" /v "MinAnimate" REG_SZ /d 0 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "TaskbarAnimations" /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /V "DisablePreviewDesktop" /T REG_DWORD /D 0 /F
-reg add "HKCU\Software\Microsoft\Windows\DWM " /V "DisablePreviewDesktop" /T REG_DWORD /D 0 /F
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /V "IconsOnly" /T REG_DWORD /D 1 /F
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /V "ListviewAlphaSelect" /T REG_DWORD /D 1 /F
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "DisablePreviewDesktop" /t REG_DWORD /D 0 /f
+reg add "HKCU\Software\Microsoft\Windows\DWM " /v "DisablePreviewDesktop" /t REG_DWORD /D 0 /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "IconsOnly" /t REG_DWORD /D 1 /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ListviewAlphaSelect" /t REG_DWORD /D 1 /f
 reg add "HKCU\Control Panel\Desktop" /v "DragFullWindows" /t REG_DWORD /d 0 /f
 reg add "HKCU\Control Panel\Desktop" /v "FontSmoothing" /t REG_SZ /d 2 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /V "ListviewShadow" /T REG_DWORD /D 1 /F
-reg add "HKCU\Software\Microsoft\Windows\DWM" /V "AlwaysHibernateThumbnails" /T REG_DWORD /D 0 /F
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ListviewShadow" /t REG_DWORD /D 1 /f
+reg add "HKCU\Software\Microsoft\Windows\DWM" /v "AlwaysHibernateThumbnails" /t REG_DWORD /D 0 /f
 
 REM *** Melhorias no Mouse ***
 reg add "HKCU\Control Panel\Mouse" /v "MouseHoverTime" /t REG_SZ /d 1 /f
@@ -275,31 +275,31 @@ reg add "HKCU\Control Panel\Mouse" /v "MouseThreshold1" /t REG_SZ /d 0 /f
 reg add "HKCU\Control Panel\Mouse" /v "MouseThreshold2" /t REG_SZ /d 0 /f
 
 REM *** Desabilitar Game Bar e DVR ***
-reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR" /V "AppCaptureEnabled" /T REG_DWORD /D 0 /F
-reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR" /V "GameDVR_Enabled" /T REG_DWORD /D 0 /F
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /V "AllowgameDVR" /T REG_DWORD /D 0 /F
-reg add "HKCU\Software\Microsoft\GameBar" /V "AllowAutoGameMode" /T REG_DWORD /D 0 /F
-reg add "HKCU\Software\Microsoft\GameBar" /V "AutoGameModeEnabled" /T REG_DWORD /D 0 /F
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR" /v "AppCaptureEnabled" /t REG_DWORD /D 0 /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR" /v "GameDVR_Enabled" /t REG_DWORD /D 0 /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /v "AllowgameDVR" /t REG_DWORD /D 0 /f
+reg add "HKCU\Software\Microsoft\GameBar" /v "AllowAutoGameMode" /t REG_DWORD /D 0 /f
+reg add "HKCU\Software\Microsoft\GameBar" /v "AutoGameModeEnabled" /t REG_DWORD /D 0 /f
 
 REM *** Desabilitar Controle de Conta de Usuário *** Impacta em programas UWP, como XBOX
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /V "PromptOnSecureDesktop" /T REG_DWORD /D 0 /F
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /V "EnableLUA" /T REG_DWORD /D 1 /F
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /V "ConsentPromptBehaviorAdmin" /T REG_DWORD /D 0 /F
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "PromptOnSecureDesktop" /t REG_DWORD /D 0 /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableLUA" /t REG_DWORD /D 1 /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "ConsentPromptBehaviorAdmin" /t REG_DWORD /D 0 /f
 
 REM *** Cores no iniciar e barra de tarefas ***
 Reg Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "ColorPrevalence" /t REG_DWORD /d 1 /f
 reg add "HKCU\Control Panel\Desktop" /v "AutoColorization " /t REG_DWORD /d 0 /f
 
 REM *** Prompt de Comando por padrão ***
-REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /V "DontUsePowerShellOnWinX" /T REG_DWORD /D 1 /F
+REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "DontUsePowerShellOnWinX" /t REG_DWORD /D 1 /f
 
 REM *** Desabilitar Protetor de tela ***
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Control Panel\Desktop" /V "ScreenSaveActive" /T REG_DWORD /D 0 /F
-reg add "HKCU\Software\Policies\Microsoft\Windows\Control Panel\Desktop" /V "ScreenSaveActive" /T REG_DWORD /D 0 /F
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Control Panel\Desktop" /v "ScreenSaveActive" /t REG_DWORD /D 0 /f
+reg add "HKCU\Software\Policies\Microsoft\Windows\Control Panel\Desktop" /v "ScreenSaveActive" /t REG_DWORD /D 0 /f
 
 REM *** Desabilitar SmartScreen ***
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /V "EnableSmartScreen" /T REG_DWORD /D 0 /F
-reg delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /V "ShellSmartScreenLevel" /F
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "EnableSmartScreen" /t REG_DWORD /D 0 /f
+reg delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "ShellSmartScreenLevel" /f
 
 REM *** Mostrar arquivos ocultos no Explorer ***
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "Hidden" /t REG_DWORD /d 1 /f
@@ -320,8 +320,8 @@ REM *** Desabilitar Localização ***
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" /v "Value" /t REG_SZ /d Deny /f
 
 REM *** Desabilitar Avisos de Arquivos baixados na Internet ***
-REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Environment" /V "SEE_MASK_NOZONECHECKS" /T REG_SZ /D 1 /F
-REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /V "SEE_MASK_NOZONECHECKS" /T REG_SZ /D 1 /F
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Environment" /v "SEE_MASK_NOZONECHECKS" /t REG_SZ /D 1 /f
+REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v "SEE_MASK_NOZONECHECKS" /t REG_SZ /D 1 /f
 
 REM *** Desbloquear automaticamente arquivos de internet ***
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments" /v "SaveZoneInformation" /t REG_DWORD /d 1 /f
@@ -429,29 +429,29 @@ reg add "HKCU\SOFTWARE\Classes\AppX6eg8h5sxqq90pv53845wmnbewywdqq5h" /v "NoOpenW
 reg add "HKCU\SOFTWARE\Classes\AppX6eg8h5sxqq90pv53845wmnbewywdqq5h" /v "NoStaticDefaultVerb" /t REG_SZ /d "" /f
 
 REM *** Desabilitar inicialização rápida ***
-REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /V "HiberbootEnabled" /T REG_DWORD /D 0 /F
+REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v "HiberbootEnabled" /t REG_DWORD /D 0 /f
 
 REM *** Desabilitar Notificações Balão ***
-REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /V "EnableBalloonTips" /T REG_DWORD /D 0 /F
+REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "EnableBalloonTips" /t REG_DWORD /D 0 /f
 
 REM *** Ocultar todos os icones na area de notificação ***
-REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Software\Microsoft\Windows\CurrentVersion\Explorer" /V EnableAutoTray /T REG_DWORD /D 1 /F
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Software\Microsoft\Windows\CurrentVersion\Explorer" /v EnableAutoTray /t REG_DWORD /D 1 /f
 
 REM *** Desabilitar questões de segurança para contas locais ***
-REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /V "NoLocalPasswordResetQuestion" /T REG_DWORD /D 1 /F
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "NoLocalPasswordResetQuestion" /t REG_DWORD /D 1 /f
 
 REM *** Melhorar Scaling ***
-REG ADD "HKCU\Control Panel\Desktop" /V "EnablePerProcessSystemDPI" /T REG_DWORD /D 1 /F
+REG ADD "HKCU\Control Panel\Desktop" /v "EnablePerProcessSystemDPI" /t REG_DWORD /D 1 /f
 
 REM *** Habilitar Modo Escuro ***
-REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /V "AppsUseLightTheme" /T REG_DWORD /D 0 /F
+REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "AppsUseLightTheme" /t REG_DWORD /D 0 /f
 
 REM *** Desabilitar Hotspot 2.0 ***
-REG ADD "HKLM\SOFTWARE\Microsoft\WlanSvc\AnqpCache" /V "OsuRegistrationStatus" /T REG_DWORD /D 1 /F
-REG ADD "HKLM\SYSTEM\ControlSet001\Services\icssvc" /V "Start" /T REG_DWORD /D 4 /F
+REG ADD "HKLM\SOFTWARE\Microsoft\WlanSvc\AnqpCache" /v "OsuRegistrationStatus" /t REG_DWORD /D 1 /f
+REG ADD "HKLM\SYSTEM\ControlSet001\Services\icssvc" /v "Start" /t REG_DWORD /D 4 /f
 
 REM *** Desabilitar Touchscreen ***
-REG ADD "HKCU\Software\Microsoft\Wisp\Touch" /V "TouchGate" /T REG_DWORD /D 0 /F
+REG ADD "HKCU\Software\Microsoft\Wisp\Touch" /v "TouchGate" /t REG_DWORD /D 0 /f
 
 REM *** Desabilitar Transparencias e efeitos de cores ***
 Reg Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "EnableTransparency" /t REG_DWORD /d 0 /f
@@ -460,8 +460,8 @@ Reg Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Wi
 Reg Add "HKCU\Control Panel\Desktop" /v "AutoColorization" /t REG_DWORD /d 0 /f
 
 REM *** Plano de Energia ***
-ECHO Alto Desempenho
-powercfg -setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
+ECHO Desempenho Maximo
+powercfg -setactive e9a42b02-d5df-448d-aa00-03f14749eb61
 ECHO Marcando configuraçoes na tomada
 powercfg.exe -change -monitor-timeout-ac 0
 powercfg.exe -change -standby-timeout-ac 0
@@ -474,13 +474,13 @@ powercfg /SETDCVALUEINDEX SCHEME_CURRENT 2a737441-1930-4402-8d77-b2bebba308a3 48
 powercfg /SETACVALUEINDEX SCHEME_CURRENT 2a737441-1930-4402-8d77-b2bebba308a3 48e6b7a6-50f5-4782-a5d4-53bb8f07e226 0
 
 REM *** Instalar .NET Framework 3.5 ***
-Dism /online /norestart /Enable-Feature /FeatureName:"NetFx3"
+Dism /online /norestart /Enable-Feature /featureName:"NetFx3"
 
 REM *** Instalar Componente Legado ***
-Dism /online /norestart /Enable-Feature /FeatureName:"LegacyComponents"
+Dism /online /norestart /Enable-Feature /featureName:"LegacyComponents"
 
 REM *** Instalar DirectPlay (importante para jogos 2D antigos) ***
-Dism /online /norestart /Enable-Feature /FeatureName:"DirectPlay"
+Dism /online /norestart /Enable-Feature /featureName:"DirectPlay"
 
 REM *** Dark Mode Janelas Win32 ***
 Reg Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\DWM" /v "ColorPrevalence" /t REG_DWORD /d 0 /f
@@ -495,31 +495,31 @@ Reg Add "HKLM\SYSTEM\CurrentControlSet\Control\FeatureManagement\Overrides\0\209
 Reg Add "HKLM\SYSTEM\CurrentControlSet\Control\FeatureManagement\Overrides\0\2093230218" /v "EnabledStateOptions" /t REG_DWORD /d 0 /f
 
 REM *** Desabilitar Power Throttling ***
-REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power\PowerThrottling" /V "PowerThrottlingOff" /T REG_DWORD /D 1 /F
+REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power\PowerThrottling" /v "PowerThrottlingOff" /t REG_DWORD /D 1 /f
 
 REM *** Otimizar Agendador para Jogos ***
-REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /V "Affinity" /T REG_DWORD /D 0 /F
-REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /V "GPU Priority" /T REG_DWORD /D 18 /F
-REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /V "Priority" /T REG_DWORD /D 6 /F
-REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /V "Scheduling Category" /T REG_SZ /D High /F
-REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /V "SFIO Priority" /T REG_SZ /D High /F
-REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /V "Latency Sensitive" /T REG_SZ /D True /F
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "Affinity" /t REG_DWORD /D 0 /f
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "GPU Priority" /t REG_DWORD /D 18 /f
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "Priority" /t REG_DWORD /D 6 /f
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "Scheduling Category" /t REG_SZ /D High /f
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "SFIO Priority" /t REG_SZ /D High /f
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "Latency Sensitive" /t REG_SZ /D True /f
 
 REM *** Otimizar Agendador para Display ***
-REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\DisplayPostProcessing" /V "Affinity" /T REG_DWORD /D 0 /F
-REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\DisplayPostProcessing" /V "BackgroundPriority" /T REG_DWORD /D 24 /F
-REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\DisplayPostProcessing" /V "GPU Priority" /T REG_DWORD /D 18 /F
-REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\DisplayPostProcessing" /V "Priority" /T REG_DWORD /D 8 /F
-REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\DisplayPostProcessing" /V "Scheduling Category" /T REG_SZ /D High /F
-REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\DisplayPostProcessing" /V "SFIO Priority" /T REG_SZ /D High /F
-REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\DisplayPostProcessing" /V "Latency Sensitive" /T REG_SZ /D True /F
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\DisplayPostProcessing" /v "Affinity" /t REG_DWORD /D 0 /f
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\DisplayPostProcessing" /v "BackgroundPriority" /t REG_DWORD /D 24 /f
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\DisplayPostProcessing" /v "GPU Priority" /t REG_DWORD /D 18 /f
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\DisplayPostProcessing" /v "Priority" /t REG_DWORD /D 8 /f
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\DisplayPostProcessing" /v "Scheduling Category" /t REG_SZ /D High /f
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\DisplayPostProcessing" /v "SFIO Priority" /t REG_SZ /D High /f
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\DisplayPostProcessing" /v "Latency Sensitive" /t REG_SZ /D True /f
 
 REM *** Otimizar Agendador para Audio ***
-REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Audio" /V "Affinity" /T REG_DWORD /D 0 /F
-REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Audio" /V "GPU Priority" /T REG_DWORD /D 8 /F
-REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Audio" /V "Priority" /T REG_DWORD /D 2 /F
-REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Audio" /V "Scheduling Category" /T REG_SZ /D Medium /F
-REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Audio" /V "SFIO Priority" /T REG_SZ /D High /F
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Audio" /v "Affinity" /t REG_DWORD /D 0 /f
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Audio" /v "GPU Priority" /t REG_DWORD /D 8 /f
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Audio" /v "Priority" /t REG_DWORD /D 2 /f
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Audio" /v "Scheduling Category" /t REG_SZ /D Medium /f
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Audio" /v "SFIO Priority" /t REG_SZ /D High /f
 
 REM Remover Apps da Store
 Powershell -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "Get-AppxPackage | where-object {$_.name -notlike '*GamingApp*'} | where-object {$_.name -notlike '*Winget*'} |where-object {$_.name -notlike '*store*'} |  where-object {$_.name -notlike '*DesktopAppInstaller*'} |where-object {$_.name -notlike '*xbox*'} | where-object {$_.name -notlike '*terminal*'} | where-object {$_.name -notlike '*RealtekSemiconductorCorp.RealtekAudioControl*'} | where-object {$_.name -notlike '*NVIDIACorp.NVIDIAControlPanel*'}  |Remove-AppxPackage"
@@ -558,7 +558,7 @@ REM *** Background em Cor Sólida ***
 REG ADD "HKCU\Control Panel\Colors" /v "Background" /t REG_SZ /d "0 0 0" /f
 
 REM *** Desabilitar pastas especiais, como Música ***
-REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell" /V FolderType /T REG_SZ /D NotSpecified /F
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell" /v FolderType /t REG_SZ /D NotSpecified /f
 
 REM *** Desabilitar Windows Defender ***
 REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v "DisableAntiSpyware" /d 1 /t REG_DWORD /f
@@ -683,9 +683,10 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorE
 REM *** Habilitar VBS ***
 REG ADD "HKLM\System\CurrentControlSet\Control\DeviceGuard" /v "EnableVirtualizationBasedSecurity" /d 1 /t REG_DWORD /f
 
-TIMEOUT /T 5
+TIMEOUT /t 5
 taskkill /f /im explorer.exe
 start explorer.exe
+
 
 
 
