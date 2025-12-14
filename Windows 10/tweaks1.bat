@@ -18,8 +18,7 @@ exit
 )
 rmdir C:\Windows\system32\adminrightstest
 
-chcp 65001
-@rem *** Desabilitar alguns serviços ***
+@rem *** Desabilitar alguns servicos ***
 sc stop DiagTrack
 sc stop diagnosticshub.standardcollector.service
 sc stop dmwappushservice
@@ -34,10 +33,8 @@ sc stop RemoteAccess
 sc stop WSearch
 sc stop iphlpsvc
 sc stop DoSvc
-sc stop ICEsoundService
 sc stop ClickToRunSvc
 sc stop SEMgrSvc
-sc stop RtkAudioUniversalService
 sc stop BDESVC
 sc stop TabletInputService
 sc stop SstpSvc
@@ -83,10 +80,8 @@ sc config RemoteAccess start= disabled
 sc config WSearch start= disabled
 sc config iphlpsvc start= disabled
 sc config DoSvc start= disabled
-sc config ICEsoundService start= disabled
 sc config ClickToRunSvc start= demand
 sc config SEMgrSvc start= disabled
-sc config RtkAudioUniversalService start= disabled
 sc config BDESVC start= disabled
 sc config TabletInputService start= disabled
 sc config SstpSvc start= disabled
@@ -175,7 +170,7 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v "SmartScree
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" /v "SmartScreenEnabled" /t "REG_SZ" /d "Off" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Remote Assistance" /v "fAllowFullControl" /t REG_DWORD /d 0 /f
 
-@REM Configurações -> Privacidade -> Geral -> Permitir aplicativos usar meu ID de propaganda
+@REM Configuracoes -> Privacidade -> Geral -> Permitir aplicativos usar meu ID de propaganda
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" /v "Enabled" /t REG_DWORD /d 0 /f
 REM - Smart Screen para aplicativos da Store
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" /v "EnableWebContentEvaluation" /t REG_DWORD /d 0 /f
@@ -186,7 +181,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Control Panel\Interna
 reg add "HKLM\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting" /v "value" /t REG_DWORD /d 0 /f
 reg add "HKLM\Software\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots" /v "value" /t REG_DWORD /d 0 /f
 
-@REM Mudar updates para notificar o agendamento de reinicialização
+@REM Mudar updates para notificar o agendamento de reinicializacao
 reg add "HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings" /v "UxOption" /t REG_DWORD /d 1 /f
 @REM Disable P2P Update downlods outside of local network
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" /v "DODownloadMode" /t REG_DWORD /d 0 /f
@@ -195,24 +190,24 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization" /v "Syst
 @REM *** Desabilitar Cortana e Telemetria ***
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCortana" /t REG_DWORD /d 0 /f
 
-REM *** Esconder a caixa de Procura da barra de Tarefas. Você ainda pode pesquisar apertando Win + o que você quer pesquisar. ***
+REM *** Esconder a caixa de Procura da barra de Tarefas. Voce ainda pode pesquisar apertando Win + o que voce quer pesquisar. ***
 REM 0 = esconder completamente, 1 = mostrar apenas ícone, 2 = Mostrar caixa completa
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /v "SearchboxTaskbarMode" /t REG_DWORD /d 0 /f
 
 REM *** Desabilitar Jump lists dos apps XAML no menu iniciar ***
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "Start_TrackDocs" /t REG_DWORD /d 0 /f
 
-REM *** Configurar Windows Explorer para iniciar no Este Computador, ao invés de Acesso Rápido ***
-REM 1 = Este Computador, 2 = Acesso Rápido
+REM *** Configurar Windows Explorer para iniciar no Este Computador, ao invés de Acesso Rapido ***
+REM 1 = Este Computador, 2 = Acesso Rapido
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "LaunchTo" /t REG_DWORD /d 1 /f
 
-REM *** Desabilitar sugestões no Menu Iniciar ***
+REM *** Desabilitar sugestoes no Menu Iniciar ***
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SystemPaneSuggestionsEnabled" /t REG_DWORD /d 0 /f
 
-REM *** Desabilitar hibernação ***
+REM *** Desabilitar hibernacao ***
 powercfg -h off 
 
-REM *** Desabilitar memória virtual ***
+REM *** Desabilitar memoria virtual ***
 wmic computersystem where name="%computername%" set AutomaticManagedPagefile=False
 wmic pagefileset where name="C:\\pagefile.sys" delete
 
@@ -254,7 +249,7 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v "EnableF
 REM *** Melhorar qualidade papel de parede ***
 reg add "HKCU\Control Panel\Desktop" /v "JPEGImportQuality" /t REG_DWORD /d 00000064 /f
 
-REM *** Tirar animações inuteís ***
+REM *** Tirar animacoes inuteis ***
 reg add "HKCU\Control Panel\Desktop" /v "VisualFXSetting" /t REG_DWORD /d 3 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Control Panel\Desktop" /v "UserPreferencesMask" /t REG_BINARY /d 9032078010000000 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Control Panel\Desktop\WindowMetrics" /v "MinAnimate" REG_SZ /d 0 /f
@@ -281,7 +276,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /v "AllowgameDVR" /t 
 reg add "HKCU\Software\Microsoft\GameBar" /v "AllowAutoGameMode" /t REG_DWORD /D 0 /f
 reg add "HKCU\Software\Microsoft\GameBar" /v "AutoGameModeEnabled" /t REG_DWORD /D 0 /f
 
-REM *** Desabilitar Controle de Conta de Usuário *** Impacta em programas UWP, como XBOX
+REM *** Desabilitar Controle de Conta de Usuario *** Impacta em programas UWP, como XBOX
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "PromptOnSecureDesktop" /t REG_DWORD /D 0 /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableLUA" /t REG_DWORD /D 1 /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "ConsentPromptBehaviorAdmin" /t REG_DWORD /D 0 /f
@@ -290,7 +285,7 @@ REM *** Cores no iniciar e barra de tarefas ***
 Reg Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v "ColorPrevalence" /t REG_DWORD /d 1 /f
 reg add "HKCU\Control Panel\Desktop" /v "AutoColorization " /t REG_DWORD /d 0 /f
 
-REM *** Prompt de Comando por padrão ***
+REM *** Prompt de Comando por padrao ***
 REG Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "DontUsePowerShellOnWinX" /t REG_DWORD /D 1 /f
 
 REM *** Desabilitar Protetor de tela ***
@@ -307,16 +302,16 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "H
 REM *** Mostrar arquivos super ocultos no Explorer ***
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ShowSuperHidden" /t REG_DWORD /d 1 /f
 
-REM *** Mostrar extensões de arquivos no Explorer ***
+REM *** Mostrar extensoes de arquivos no Explorer ***
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "HideFileExt" /t  REG_DWORD /d 0 /f
 
 REM *** Desabilitar Armazenamento Reservado ***
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager" /v "ShippedWithReserves" /t  REG_DWORD /d 0 /f
 
-REM *** Desabilitar Otimização de Entrega ***
+REM *** Desabilitar Otimizacao de Entrega ***
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Settings" /v "DownloadMode" /t REG_SZ /d 0 /f
 
-REM *** Desabilitar Localização ***
+REM *** Desabilitar Localizacao ***
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" /v "Value" /t REG_SZ /d Deny /f
 
 REM *** Desabilitar Avisos de Arquivos baixados na Internet ***
@@ -339,7 +334,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCorta
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /v "BingSearchEnabled" /t REG_DWORD /d 0 /f
 reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /v "CortanaConsent" /t REG_DWORD /d 0 /f
 
-REM *** Desabilitar Atualizações Automáticas de Drivers ***
+REM *** Desabilitar Atualizacoes Automaticas de Drivers ***
 reg add "HKLM\SOFTWARE\Policies\Microsoft\WindowsStore" /v "LetAppsRunInBackground" /t REG_DWORD /d 2 /f
 
 REM *** Desabilitar Propagandas ***
@@ -369,7 +364,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main" /v "AllowPrelaunch
 reg add "HKLM\SOFTWARE\Policies\Microsoft\MicrosoftEdge\TabPreloader" /v "PreventTabPreloading" /t REG_DWORD /d 1 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\MicrosoftEdge\TabPreloader" /v "AllowTabPreloading" /t REG_DWORD /d 0 /f
 
-REM *** TWE variados de privacidade ***
+REM *** Tweaks variados de privacidade ***
 PowerShell -Command "Set-WindowsSearchSetting -EnableWebResultsSetting $false"
 reg add "HKCU\SOFTWARE\Microsoft\Personalization\Settings" /v "AcceptedPrivacyPolicy" /t REG_DWORD /d 0 /f
 reg add "HKCU\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore" /v "HarvestContacts" /t REG_DWORD /d 0 /f
@@ -403,10 +398,10 @@ REG ADD "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management
 REG ADD "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverride" /t REG_DWORD /d "3" /f
 REG ADD "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverrideMask" /t REG_DWORD /d "3" /f
 
-REM *** Desabilitar Delay de Inicialização ***
+REM *** Desabilitar Delay de Inicializacao ***
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Serialize" /v "Startupdelayinmsec" /t REG_DWORD /d 0 /f
 
-REM *** Corrigir Erro de app padrão foi resetado ***
+REM *** Corrigir Erro de app padrao foi resetado ***
 reg add "HKCU\SOFTWARE\Classes\AppXvhc4p7vz4b485xfp46hhk3fq3grkdgjg" /v "NoOpenWith" /t REG_SZ /d "" /f
 reg add "HKCU\SOFTWARE\Classes\AppXvhc4p7vz4b485xfp46hhk3fq3grkdgjg" /v "NoStaticDefaultVerb" /t REG_SZ /d "" /f
 reg add "HKCU\SOFTWARE\Classes\AppX4hxtad77fbk3jkkeerkrm0ze94wjf3s9" /v "NoOpenWith" /t REG_SZ /d "" /f
@@ -428,16 +423,16 @@ reg add "HKCU\SOFTWARE\Classes\AppXqj98qxeaynz6dv4459ayz6bnqxbyaqcs" /v "NoStati
 reg add "HKCU\SOFTWARE\Classes\AppX6eg8h5sxqq90pv53845wmnbewywdqq5h" /v "NoOpenWith" /t REG_SZ /d "" /f
 reg add "HKCU\SOFTWARE\Classes\AppX6eg8h5sxqq90pv53845wmnbewywdqq5h" /v "NoStaticDefaultVerb" /t REG_SZ /d "" /f
 
-REM *** Desabilitar inicialização rápida ***
+REM *** Desabilitar inicializacao rapida ***
 REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v "HiberbootEnabled" /t REG_DWORD /D 0 /f
 
-REM *** Desabilitar Notificações Balão ***
+REM *** Desabilitar Notificacoes Balao ***
 REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "EnableBalloonTips" /t REG_DWORD /D 0 /f
 
-REM *** Ocultar todos os icones na area de notificação ***
+REM *** Ocultar todos os icones na area de notificacao ***
 REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Software\Microsoft\Windows\CurrentVersion\Explorer" /v EnableAutoTray /t REG_DWORD /D 1 /f
 
-REM *** Desabilitar questões de segurança para contas locais ***
+REM *** Desabilitar questoes de seguranca para contas locais ***
 REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "NoLocalPasswordResetQuestion" /t REG_DWORD /D 1 /f
 
 REM *** Melhorar Scaling ***
@@ -462,11 +457,11 @@ Reg Add "HKCU\Control Panel\Desktop" /v "AutoColorization" /t REG_DWORD /d 0 /f
 REM *** Plano de Energia ***
 ECHO Desempenho Maximo
 powercfg -setactive e9a42b02-d5df-448d-aa00-03f14749eb61
-ECHO Marcando configuraçoes na tomada
+ECHO Marcando configuracoes na tomada
 powercfg.exe -change -monitor-timeout-ac 0
 powercfg.exe -change -standby-timeout-ac 0
 powercfg.exe -change -hibernate-timeout-ac 0
-ECHO Desabilitar hibernaçao de HD/SSD
+ECHO Desabilitar hibernacao de HD/SSD
 powercfg /SETDCVALUEINDEX SCHEME_CURRENT 0012ee47-9041-4b5d-9b77-535fba8b1442 6738e2c4-e8a5-4a42-b16a-e040e769756e 0
 powercfg /SETACVALUEINDEX SCHEME_CURRENT 0012ee47-9041-4b5d-9b77-535fba8b1442 6738e2c4-e8a5-4a42-b16a-e040e769756e 0
 ECHO Desabilitar supensao seletiva de usb
@@ -487,7 +482,7 @@ Reg Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Wi
 Reg Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\DWM" /v "AccentColor" /t REG_DWORD /d 0 /f
 Reg Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\DWM" /v "AccentColorInactive" /t REG_DWORD /d 0 /f
 
-REM *** Desabilitar iniciar apps após reiniciar ***
+REM *** Desabilitar iniciar apps apos reiniciar ***
 Reg Add "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v "RestartApps" /t REG_DWORD /d 0 /f
 
 REM *** Tiles transparentes no Iniciar ***
@@ -547,17 +542,17 @@ REM *** Desabilitar reserva de armazenamento ***
 Reg Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager" /v "ShippedWithReserves" /t REG_DWORD /d 0 /f
 Reg Add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager" /v "PassedPolicy" /t REG_DWORD /d 0 /f
 
-REM *** Desabilitar centro de notificações ***
+REM *** Desabilitar centro de notificacoes ***
 REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "DisableNotificationCenter" /t REG_DWORD /d 1 /f
 
 REM *** Desabilitar aplicativos em segundo plano ***
 Reg Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications" /v "GlobalUserDisabled" /t REG_DWORD /d 1 /f
 Reg Add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Software\Microsoft\Windows\CurrentVersion\Search" /v "BackgroundAppGlobalToggle" /t REG_DWORD /d 0 /f
 
-REM *** Background em Cor Sólida ***
+REM *** Background em Cor Solida ***
 REG ADD "HKCU\Control Panel\Colors" /v "Background" /t REG_SZ /d "0 0 0" /f
 
-REM *** Desabilitar pastas especiais, como Música ***
+REM *** Desabilitar pastas especiais, como Musica ***
 REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\Bags\AllFolders\Shell" /v FolderType /t REG_SZ /D NotSpecified /f
 
 REM *** Desabilitar Windows Defender ***
@@ -581,13 +576,13 @@ REG ADD "HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings" /v "PauseUpdatesExpi
 REM *** Desabilitar barra de pessoas ***
 REG ADD "HKCU\Software\Policies\Microsoft\Windows\Explorer" /v "HidePeopleBar" /d 1 /t REG_DWORD /f
 
-REM *** Desabilitar Assistência Remota ***
+REM *** Desabilitar Assistencia Remota ***
 REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Remote Assistance" /v "fAllowToGetHelp" /d 0 /t REG_DWORD /f
 
-REM *** Habilitar agendamento de aceleração de GPU ***
+REM *** Habilitar agendamento de aceleracao de GPU ***
 REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /d 2 /t REG_DWORD /f
 
-REM *** Desabilitar Histórico do Acesso Rápido ***
+REM *** Desabilitar Historico do Acesso Rapido ***
 REG delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\HomeFolderDesktop\NameSpace\DelegateFolders\{3936E9E4-D92C-4EEE-A85A-BC16D5EA0819}" /f
 REG delete "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\HomeFolderDesktop\NameSpace\DelegateFolders\{3936E9E4-D92C-4EEE-A85A-BC16D5EA0819}" /f
 REG delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\HomeFolderDesktop\NameSpace\DelegateFolders\{3134ef9c-6b18-4996-ad04-ed5912e00eb5}" /f
@@ -624,18 +619,18 @@ icacls "%%LocalAppData%\Spotify\Storage" /deny *S-1-1-0:(F)
 REM *** Desabilitar Cliente DNS ***
 REM reg add "HKLM\System\CurrentControlSet\services\Dnscache" /v "Start" /t REG_DWORD /d 4 /f
 
-REM *** Desabilitar Acompanhamento de Lançamento de Aplicativos ***
+REM *** Desabilitar Acompanhamento de Lancamento de Aplicativos ***
 reg add "HKCU\Software\Policies\Microsoft\Windows\EdgeUI" /v "DisableMFUTracking" /t REG_DWORD /d 1 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\EdgeUI" /v "DisableMFUTracking" /t REG_DWORD /d 1 /f
 
-REM *** Desabilitar dicionário pessoal ***
+REM *** Desabilitar dicionario pessoal ***
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\CPSS\Store\InkingAndTypingPersonalization" /v "Value" /t REG_DWORD /d 0 /f
 reg add "HKCU\Software\Microsoft\Personalization\Settings" /v "AcceptedPrivacyPolicy" /t REG_DWORD /d 0 /f
 reg add "HKCU\Software\Microsoft\InputPersonalization" /v "RestrictImplicitInkCollection" /t REG_DWORD /d 1 /f
 reg add "HKCU\Software\Microsoft\InputPersonalization" /v "RestrictImplicitTextCollection" /t REG_DWORD /d 1 /f
 reg add "HKCU\Software\Microsoft\InputPersonalization\TrainedDataStore" /v "HarvestContacts" /t REG_DWORD /d 0 /f
 
-REM *** Desabilitar frequencia de comentários ***
+REM *** Desabilitar frequencia de comentarios ***
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v "DoNotShowFeedbackNotifications" /t REG_DWORD /d 1 /f
 
 REM *** Desabilitar historico de atividades ***
@@ -647,7 +642,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\SearchSettings" /v "IsDe
 REM *** Desabilitar destaque de pesquisa ***
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "EnableDynamicContentInWSB" /t REG_DWORD /d 0 /f
 
-REM *** Desabilitar comunicação com dispositivos não pareados ***
+REM *** Desabilitar comunicacao com dispositivos nao pareados ***
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsSyncWithDevices" /t REG_DWORD /d 2 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsSyncWithDevices_UserInControlOfTheseApps" /t REG_MULTI_SZ  /d 00,00 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsSyncWithDevices_ForceAllowTheseApps" /t REG_MULTI_SZ  /d 00,00 /f
@@ -674,7 +669,7 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\phoneCall" /v "Value" /t REG_SZ /d Deny /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\appointments" /v "Value" /t REG_SZ /d Deny /f
 
-REM *** Desabilitar Criação de Atalho do Edge ***
+REM *** Desabilitar Criacao de Atalho do Edge ***
 reg add "HKLM\SOFTWARE\Policies\Microsoft\EdgeUpdate" /v "RemoveDesktopShortcutDefault" /t REG_DWORD /d 1 /f
 
 REM *** Habilitar Isolamento de Nucleo ***
@@ -686,6 +681,7 @@ REG ADD "HKLM\System\CurrentControlSet\Control\DeviceGuard" /v "EnableVirtualiza
 TIMEOUT /t 5
 taskkill /f /im explorer.exe
 start explorer.exe
+
 
 
 
