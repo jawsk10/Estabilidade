@@ -147,11 +147,9 @@ schtasks /Change /tN "Microsoft\Windows\Time Synchronization\SynchronizeTime" /D
 schtasks /Change /tN "Microsoft\Windows\Windows Error Reporting\QueueReporting" /Disable
 
 REM *** Desabilitar Ultimo Acesso Arquivos ***
-
 fsutil.exe behavior set disableLastAccess 1
 
 REM *** Desabilitar nome arquivos 8_3 ***
-
 fsutil.exe 8dot3name set 1
 
 @rem *** Remover Telemetria e Coleta de Dados ***
@@ -681,6 +679,7 @@ REG ADD "HKLM\System\CurrentControlSet\Control\DeviceGuard" /v "EnableVirtualiza
 TIMEOUT /t 5
 taskkill /f /im explorer.exe
 start explorer.exe
+
 
 
 
