@@ -131,7 +131,7 @@ schtasks /Change /tN "Microsoft\Office\Office Automatic Updates 2.0" /disable
 schtasks /Change /tN "Microsoft\Office\Office ClickToRun Service Monitor" /disable
 schtasks /Change /tN "Microsoft\Office\Office Feature Updates" /disable
 schtasks /Change /tN "Microsoft\Office\Office Feature Updates Logon" /disable
-schtasks /Change /tN "\Microsoft\Windows\Power Efficiency Diagnostics\AnalyzeSystem" /disable
+schtasks /Change /tN "Microsoft\Windows\Power Efficiency Diagnostics\AnalyzeSystem" /disable
 schtasks /Change /tN "MicrosoftEdgeUpdateTaskMachineCore" /disable
 schtasks /Change /tN "MicrosoftEdgeUpdateTaskMachineUA" /disable
 schtasks /Change /tN "Microsoft\Windows\Autochk\Proxy" /disable
@@ -381,6 +381,8 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProf
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "SystemResponsiveness" /t REG_DWORD /d "10" /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\csrss.exe\PerfOptions" /v "CpuPriorityClass" /t REG_DWORD /d "3" /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\csrss.exe\PerfOptions" /v "IoPriority" /t REG_DWORD /d "3" /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\audiodg.exe\PerfOptions" /v "CpuPriorityClass" /t REG_DWORD /d "3" /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\audiodg.exe\PerfOptions" /v "IoPriority" /t REG_DWORD /d "3" /f
 reg add "HKLM\SYSTEM\ControlSet001\Services\kbdclass\Parameters" /v "KeyboardDataQueueSize" /t REG_DWORD /d "64" /f
 reg add "HKLM\SYSTEM\ControlSet001\Services\mouclass\Parameters" /v "MouseDataQueueSize" /t REG_DWORD /d "64" /f
 
@@ -700,6 +702,7 @@ REG ADD "HKLM\System\CurrentControlSet\Control\DeviceGuard" /v "EnableVirtualiza
 TIMEOUT /t 5
 taskkill /f /im explorer.exe
 start explorer.exe
+
 
 
 
