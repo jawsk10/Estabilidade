@@ -298,7 +298,7 @@ REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Wi
 REG ADD "HKCU\Software\Microsoft\Windows\DWM" /v "AlwaysHibernateThumbnails" /t REG_DWORD /d "0" /f
 
 :: Mouse Improvements
-REG ADD "HKCU\Control Panel\Mouse" /v "MouseHoverTime" /t REG_SZ /d "1" /f
+REG ADD "HKCU\Control Panel\Mouse" /v "MouseHoverTime" /t REG_SZ /d "0" /f
 REG ADD "HKCU\Control Panel\Mouse" /v "MouseSpeed" /t REG_SZ /d "0" /f
 REG ADD "HKCU\Control Panel\Mouse" /v "MouseThreshold1" /t REG_SZ /d "0" /f
 REG ADD "HKCU\Control Panel\Mouse" /v "MouseThreshold2" /t REG_SZ /d "0" /f
@@ -738,5 +738,6 @@ POWERSHELL "Get-WmiObject MSPower_DeviceEnable -Namespace root\wmi | ForEach-Obj
 TIMEOUT /t 5
 taskkill /f /im explorer.exe
 start explorer.exe
+
 
 
