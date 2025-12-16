@@ -19,6 +19,7 @@ exit
 rmdir C:\Windows\system32\adminrightstest
 
 :: Services Stop
+sc stop EventLog
 sc stop DiagTrack
 sc stop diagnosticshub.standardcollector.service
 sc stop dmwappushservice
@@ -67,6 +68,7 @@ sc stop BITS
 sc stop DPS
 
 :: Services Disable
+sc config EventLog start= disabled
 sc config DiagTrack start= disabled
 sc config diagnosticshub.standardcollector.service start= disabled
 sc config dmwappushservice start= disabled
@@ -164,6 +166,23 @@ fsutil.exe behavior set disableLastAccess 1
 
 :: Name Archive
 fsutil.exe 8dot3name set 1
+
+:: Memory Usage
+fsutil behavior query memoryusage
+fsutil behavior set memoryusage 2
+
+:: Mftzone
+fsutil behavior set mftzone 4
+
+:: Notify
+fsutil behavior set disabledeletenotify 0
+
+:: Encrypt Paging File
+fsutil behavior set encryptpagingfile 0
+
+:: Get-MMAgent
+powershell -Command "Disable-MMAgent -PageCombining"
+powershell -Command "Disable-MMAgent -MemoryCompression"
 
 :: Telemetry & Collect Data
 REG ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata" /v "PreventDeviceMetadataFromNetwork" /t REG_DWORD /d "1" /f
@@ -385,6 +404,7 @@ REG ADD "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\Loos
 REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Permissions\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}" /v "SensorPermissionState" /t REG_DWORD /d "0" /f
 REG ADD "HKLM\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\features" /v "WiFiSenseCredShared" /t REG_DWORD /d "0" /f
 REG ADD "HKLM\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\features" /v "WiFiSenseOpen" /t REG_DWORD /d "0" /f
+
 
 :: Win32PrioritySeparation
 REG ADD "HKLM\SYSTEM\ControlSet001\Control\PriorityControl" /v "Win32PrioritySeparation" /t REG_DWORD /d "36" /f
@@ -701,3 +721,4 @@ REG ADD "HKLM\System\CurrentControlSet\Control\DeviceGuard" /v "EnableVirtualiza
 TIMEOUT /t 5
 taskkill /f /im explorer.exe
 start explorer.exe
+
