@@ -621,22 +621,6 @@ REG ADD "HKCU\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "DisableSearchBox
 REM *** Desabilitar Highlights na barra de Pesquisa ***
 REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "EnableDynamicContentInWSB" /d "0" /t REG_DWORD /f
 
-REM *** Desabilitar escrita de Cache de navegadores e streaming ***
-taskkill /f /im msedge.exe
-REM Google Chrome
-del /s /q "%userprofile%\AppData\Local\Google\Chrome\User Data\Default\Cache"
-icacls "%userprofile%\AppData\Local\Google\Chrome\User Data\Default\Cache" /deny *S-1-1-0:(F)
-REM Microsoft Edge
-del /s /q "%userprofile%\AppData\Local\Microsoft\Edge\User Data\Default\Cache"
-icacls "%userprofile%\AppData\Local\Microsoft\Edge\User Data\Default\Cache" /deny *S-1-1-0:(F)
-REM Mozilla Firefox
-cd "%userprofile%\AppData\Local\Mozilla\Firefox\Profiles\*default-release"
-del /s /q cache2
-icacls cache2 /deny *S-1-1-0:(F)
-REM Spotify
-del /s /q "%LocalAppData%\Spotify\Storage"
-icacls "%%LocalAppData%\Spotify\Storage" /deny *S-1-1-0:(F)
-
 REM *** Desabilitar Cliente DNS ***
 REM reg add "HKLM\System\CurrentControlSet\services\Dnscache" /v "Start" /t REG_DWORD /d "4" /f
 
@@ -702,8 +686,5 @@ REG ADD "HKLM\System\CurrentControlSet\Control\DeviceGuard" /v "EnableVirtualiza
 TIMEOUT /t 5
 taskkill /f /im explorer.exe
 start explorer.exe
-
-
-
 
 
