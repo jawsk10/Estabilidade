@@ -18,7 +18,7 @@ exit
 )
 rmdir C:\Windows\system32\adminrightstest
 
-:: Services
+:: Services Stop
 sc stop DiagTrack
 sc stop diagnosticshub.standardcollector.service
 sc stop dmwappushservice
@@ -66,6 +66,7 @@ sc stop BthAvctpSvc
 sc stop BITS
 sc stop DPS
 
+:: Services Disable
 sc config DiagTrack start= disabled
 sc config diagnosticshub.standardcollector.service start= disabled
 sc config dmwappushservice start= disabled
@@ -674,3 +675,4 @@ REG ADD "HKLM\System\CurrentControlSet\Control\DeviceGuard" /v "EnableVirtualiza
 TIMEOUT /t 5
 taskkill /f /im explorer.exe
 start explorer.exe
+
