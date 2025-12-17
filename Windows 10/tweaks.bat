@@ -149,13 +149,78 @@ schtasks /Change /tN "Microsoft\Windows\Time Synchronization\ForceSynchronizeTim
 schtasks /Change /tN "Microsoft\Windows\Time Synchronization\SynchronizeTime" /disable
 schtasks /Change /tN "Microsoft\Windows\Windows Error Reporting\QueueReporting" /disable
 
+
 :: Adapter
+for /f %%r in ('reg query "HKLM\SYSTEM\ControlSet001\Control\Class\{4D36E972-E325-11CE-BFC1-08002bE10318}" /f "PCI\VEN" /d /s^|Findstr HKEY') do (
+REG ADD "%%r" /v "*EEE" /t REG_SZ /d "0" /f
+REG ADD "%%r" /v "*FlowControl" /t REG_SZ /d "0" /f
+REG ADD "%%r" /v "*InterruptModeration" /t REG_SZ /d "0" /f
+REG ADD "%%r" /v "*JumboPacket" /t REG_SZ /d "1415" /f
+REG ADD "%%r" /v "*LsoV2IPv4" /t REG_SZ /d "1" /f
+REG ADD "%%r" /v "*LsoV2IPv6" /t REG_SZ /d "1" /f
+REG ADD "%%r" /v "*ModernStandbyWoLMagicPacket" /t REG_SZ /d "0" /f
+REG ADD "%%r" /v "*NumRssQueues" /t REG_SZ /d "1" /f
+REG ADD "%%r" /v "*PMARPOffload" /t REG_SZ /d "0" /f
+REG ADD "%%r" /v "*PMNSOffload" /t REG_SZ /d "0" /f
+REG ADD "%%r" /v "*PriorityVLANTag" /t REG_SZ /d "0" /f
+REG ADD "%%r" /v "*ReceiveBuffers" /t REG_SZ /d "512" /f
+REG ADD "%%r" /v "*RSS" /t REG_SZ /d "1" /f
+REG ADD "%%r" /v "*RssBaseProcNumber" /t REG_SZ /d "7" /f
+REG ADD "%%r" /v "*RssMaxProcNumber" /t REG_SZ /d "1" /f
+REG ADD "%%r" /v "*SpeedDuplex" /t REG_SZ /d "0" /f
+REG ADD "%%r" /v "*TCPChecksumOffloadIPv4" /t REG_SZ /d "0" /f
+REG ADD "%%r" /v "*TCPChecksumOffloadIPv6" /t REG_SZ /d "0" /f
+REG ADD "%%r" /v "*TransmitBuffers" /t REG_SZ /d "128" /f
+REG ADD "%%r" /v "*WakeOnMagicPacket" /t REG_SZ /d "0" /f
+REG ADD "%%r" /v "*WakeOnPattern" /t REG_SZ /d "0" /f
+REG ADD "%%r" /v "AdvancedEEE" /t REG_SZ /d "0" /f
+REG ADD "%%r" /v "AutoDisableGigabit" /t REG_SZ /d "0" /f
+REG ADD "%%r" /v "EEELinkAdvertisement" /t REG_SZ /d "0" /f
+REG ADD "%%r" /v "EnableGreenEthernet" /t REG_SZ /d "0" /f
+REG ADD "%%r" /v "GigaLite" /t REG_SZ /d "0" /f
+REG ADD "%%r" /v "PowerSavingMode" /t REG_SZ /d "0" /f
+REG ADD "%%r" /v "S5WakeOnLan" /t REG_SZ /d "0" /f
+REG ADD "%%r" /v "WolShutdownLinkSpeed" /t REG_SZ /d "2" /f
+)
 for /f %%i in ('wmic path win32_networkadapter get GUID ^| findstr "{"') do REG ADD "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i" /v TcpAckFrequency /t REG_DWORD /d 1 /f
 for /f %%i in ('wmic path win32_networkadapter get GUID ^| findstr "{"') do REG ADD "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i" /v TcpDelAckTicks /t REG_DWORD /d 0 /f
 for /f %%i in ('wmic path win32_networkadapter get GUID ^| findstr "{"') do REG ADD "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i" /v TCPNoDelay /t REG_DWORD /d 1 /f
 
 :: Configuration
+POWERSHELL Set-NetTCPSetting -SettingName internet -ScalingHeuristics disabled -ErrorAction SilentlyContinue
+POWERSHELL Set-NetTCPSetting -SettingName internet -MinRto 300 -ErrorAction SilentlyContinue
+POWERSHELL Disable-NetAdapterEncapsulatedPacketTaskOffload -Name "*" -ErrorAction SilentlyContinue
+POWERSHELL Disable-NetAdapterIPsecOffload -Name "*" -ErrorAction SilentlyContinue
+POWERSHELL Disable-NetAdapterChecksumOffload -Name "*" -ErrorAction SilentlyContinue
+POWERSHELL Disable-NetAdapterLso -Name "*" -ErrorAction SilentlyContinue
+POWERSHELL Disable-NetAdapterRsc -Name "*" -ErrorAction SilentlyContinue
+POWERSHELL Disable-NetAdapterIPsecOffload -Name "*" -ErrorAction SilentlyContinue
 POWERSHELL Disable-NetAdapterPowerManagement -Name "*" -ErrorAction SilentlyContinue
+:: Adapter bindings
+POWERSHELL Disable-NetAdapterBinding -Name "*" -ComponentID ms_lldp -ErrorAction SilentlyContinue
+:: Link-Layer Topology Discovery Mapper I/O Driver
+POWERSHELL Disable-NetAdapterBinding -Name "*" -ComponentID ms_lltdio -ErrorAction SilentlyContinue
+:: Client for Microsoft Networks
+POWERSHELL Disable-NetAdapterBinding -Name "*" -ComponentID ms_msclient -ErrorAction SilentlyContinue
+:: Microsoft LLDP Protocol Driver
+POWERSHELL Disable-NetAdapterBinding -Name "*" -ComponentID ms_rspndr -ErrorAction SilentlyContinue
+:: File and Printer Sharing for Microsoft Networks
+POWERSHELL Disable-NetAdapterBinding -Name "*" -ComponentID ms_server -ErrorAction SilentlyContinue
+:: Microsoft Network Adapter Multiplexor Protocol
+POWERSHELL Disable-NetAdapterBinding -Name "*" -ComponentID ms_implat -ErrorAction SilentlyContinue
+
+:: Bindings that are not common
+POWERSHELL Disable-NetAdapterBinding -Name "*" -ComponentID ms_pppoe -ErrorAction SilentlyContinue
+POWERSHELL Disable-NetAdapterBinding -Name "*" -ComponentID ms_rdma_ndk -ErrorAction SilentlyContinue
+POWERSHELL Disable-NetAdapterBinding -Name "*" -ComponentID ms_ndisuio -ErrorAction SilentlyContinue
+POWERSHELL Disable-NetAdapterBinding -Name "*" -ComponentID ms_wfplwf_upper -ErrorAction SilentlyContinue
+POWERSHELL Disable-NetAdapterBinding -Name "*" -ComponentID ms_wfplwf_lower -ErrorAction SilentlyContinue
+POWERSHELL Disable-NetAdapterBinding -Name "*" -ComponentID ms_netbt -ErrorAction SilentlyContinue
+POWERSHELL Disable-NetAdapterBinding -Name "*" -ComponentID ms_netbios -ErrorAction SilentlyContinue
+
+:: QoS Packet Scheduler
+POWERSHELL Disable-NetAdapterQos -Name "*" -ErrorAction SilentlyContinue
+POWERSHELL Disable-NetAdapterBinding -Name "*" -ComponentID ms_pacer -ErrorAction SilentlyContinue
 
 :: Core 2 Affinity
 for /f %%n in ('wmic path win32_networkadapter get PNPDeviceID ^| findstr /L "VEN_"') do (
@@ -738,6 +803,7 @@ POWERSHELL "Get-WmiObject MSPower_DeviceEnable -Namespace root\wmi | ForEach-Obj
 TIMEOUT /t 5
 taskkill /f /im explorer.exe
 start explorer.exe
+
 
 
 
