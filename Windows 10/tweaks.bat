@@ -787,10 +787,4 @@ POWERSHELL "Get-WmiObject MSPower_DeviceEnable -Namespace root\wmi | ForEach-Obj
 TIMEOUT /t 5
 taskkill /f /im explorer.exe
 start explorer.exe
-
-
-
-
-
-
-
+shutdown /t /r 5
