@@ -154,6 +154,17 @@ for /f %%i in ('wmic path win32_networkadapter get GUID ^| findstr "{"') do REG 
 for /f %%i in ('wmic path win32_networkadapter get GUID ^| findstr "{"') do REG ADD "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i" /v TcpDelAckTicks /t REG_DWORD /d 0 /f
 for /f %%i in ('wmic path win32_networkadapter get GUID ^| findstr "{"') do REG ADD "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i" /v TCPNoDelay /t REG_DWORD /d 1 /f
 
+:: Advanced Adapter
+POWERSHELL Set-NetAdapterAdvancedProperty -Name "Ethernet" -RegistryKeyword "*InterruptModeration" -RegistryValue 0
+POWERSHELL Set-NetAdapterAdvancedProperty -Name "Ethernet" -RegistryKeyword "*EEE" -RegistryValue 0
+POWERSHELL Set-NetAdapterAdvancedProperty -Name "Ethernet" -RegistryKeyword "AdvancedEEE" -RegistryValue 0
+POWERSHELL Set-NetAdapterAdvancedProperty -Name "Ethernet" -RegistryKeyword "PowerSavingMode" -RegistryValue 0
+POWERSHELL Set-NetAdapterAdvancedProperty -Name "Ethernet" -RegistryKeyword "S5WakeOnLan" -RegistryValue 0
+POWERSHELL Set-NetAdapterAdvancedProperty -Name "Ethernet" -RegistryKeyword "WolShutdownLinkSpeed" -RegistryValue 2
+POWERSHELL Set-NetAdapterAdvancedProperty -Name "Ethernet" -RegistryKeyword "*ModernStandbyWoLMagicPacket" -RegistryValue 0
+POWERSHELL Set-NetAdapterAdvancedProperty -Name "Ethernet" -RegistryKeyword "*WakeOnMagicPacket" -RegistryValue 0
+POWERSHELL Set-NetAdapterAdvancedProperty -Name "Ethernet" -RegistryKeyword "*WakeOnPattern" -RegistryValue 0
+
 :: Configuration
 POWERSHELL Set-NetTCPSetting -SettingName internet -ScalingHeuristics disabled -ErrorAction SilentlyContinue
 POWERSHELL Set-NetTCPSetting -SettingName internet -MinRto 300 -ErrorAction SilentlyContinue
@@ -776,6 +787,7 @@ POWERSHELL "Get-WmiObject MSPower_DeviceEnable -Namespace root\wmi | ForEach-Obj
 TIMEOUT /t 5
 taskkill /f /im explorer.exe
 start explorer.exe
+
 
 
 
