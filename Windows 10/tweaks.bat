@@ -206,7 +206,6 @@ POWERSHELL Disable-NetAdapterBinding -Name "*" -ComponentID ms_pacer -ErrorActio
 for /f %%n in ('wmic path win32_networkadapter get PNPDeviceID ^| findstr /L "VEN_"') do (
 REG ADD "HKLM\SYSTEM\ControlSet001\Enum\%%n\Device Parameters\Interrupt Management\Affinity Policy" /v "AssignmentSetOverride" /t REG_BINARY /d "04" /f
 REG ADD "HKLM\SYSTEM\ControlSet001\Enum\%%n\Device Parameters\Interrupt Management\Affinity Policy" /v "DevicePolicy" /t REG_DWORD /d "4" /f
-REG ADD "HKLM\SYSTEM\ControlSet001\Enum\%%n\Device Parameters\Interrupt Management\MessageSignaledInterruptProperties" /v "MessageNumberLimit" /t REG_DWORD /d "256" /f
 )
 
 :: Restarting Adapter
@@ -801,3 +800,4 @@ taskkill /f /im dwm.exe
 start dwm.exe
 start explorer.exe
 shutdown /t /r 5
+
