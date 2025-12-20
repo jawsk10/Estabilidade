@@ -530,6 +530,15 @@ REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Wi
 REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\DWM" /v "ColorPrevalence" /t REG_DWORD /d "0" /f
 REG ADD "HKCU\Control Panel\Desktop" /v "AutoColorization" /t REG_DWORD /d "0" /f
 
+:: Remove unnecessary animations
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Control Panel\Desktop" /v "UserPreferencesMask" /t REG_BINARY /d "9032078010000000" /f
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Control Panel\Desktop\WindowMetrics" /v "MinAnimate" REG_SZ /d "0" /f
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "TaskbarAnimations" /t REG_DWORD /d "0" /f
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "DisablePreviewDesktop" /t REG_DWORD /d "0" /f
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "IconsOnly" /t REG_DWORD /d "1" /f
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ListviewAlphaSelect" /t REG_DWORD /d "1" /f
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ListviewShadow" /t REG_DWORD /d "1" /f
+
 :: DWM
 REG ADD "HKCU\SOFTWARE\Microsoft\Windows\DWM" /v "ColorizationBlurBalance" /t REG_DWORD /d "0" /f
 REG ADD "HKCU\SOFTWARE\Microsoft\Windows\DWM" /v "ColorizationGlassAttribute" /t REG_DWORD /d "0" /f
@@ -773,5 +782,6 @@ taskkill /f /im explorer.exe
 taskkill /f /im dwm.exe
 start dwm.exe
 start explorer.exe
+
 
 
