@@ -681,7 +681,9 @@ REG ADD "HKCU\Software\Policies\Microsoft\Windows\Explorer" /v "HidePeopleBar" /
 REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Remote Assistance" /v "fAllowToGetHelp" /d "0" /t REG_DWORD /f
 
 :: GPU acceleration scheduling
+REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "GpuPreference" /d "2" /t REG_DWORD /f
 REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /d "2" /t REG_DWORD /f
+REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchPriority" /d "1" /t REG_DWORD /f
 
 :: History of Quick Access
 REG DELETE "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\HomeFolderDesktop\NameSpace\DelegateFolders\{3936E9E4-D92C-4EEE-A85A-BC16D5EA0819}" /f
@@ -771,4 +773,5 @@ taskkill /f /im explorer.exe
 taskkill /f /im dwm.exe
 start dwm.exe
 start explorer.exe
+
 
