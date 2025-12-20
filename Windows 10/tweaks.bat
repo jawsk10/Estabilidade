@@ -551,7 +551,7 @@ REG ADD "HKCU\SOFTWARE\Microsoft\Windows\DWM" /v "AlwaysHibernateThumbnails" /t 
 REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "CoalesecingTimerinterval" /t REG_SZ /d "0" /f
 
 :: Power Plan
-ECHO Ultimate Performace
+:: Ultimate Performace
 powercfg -setactive e9a42b02-d5df-448d-aa00-03f14749eb61
 :: Settings
 powercfg.exe -change -monitor-timeout-ac 0
@@ -783,3 +783,4 @@ taskkill /f /im dwm.exe
 start dwm.exe
 start explorer.exe
 pause
+
