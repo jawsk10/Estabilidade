@@ -68,6 +68,11 @@ sc stop BITS
 sc stop DPS
 sc stop Themes
 sc stop Spooler
+sc stop RtkAudioUniversalService
+sc stop XboxGipSvc
+sc stop vmicvss
+sc stop WalletService
+sc stop Fax
 
 :: Services Disable
 sc config EventLog start=disabled
@@ -85,7 +90,7 @@ sc config RemoteAccess start=disabled
 sc config WSearch start=disabled
 sc config iphlpsvc start=disabled
 sc config DoSvc start=disabled
-sc config ClickToRunSvc start= demand
+sc config ClickToRunSvc start=demand
 sc config SEMgrSvc start=disabled
 sc config BDESVC start=disabled
 sc config TabletInputService start=disabled
@@ -120,6 +125,11 @@ sc config DPS start=disabled
 sc config nlasvc depend=NSI/RpcSs/TcpIp/Dhcp
 sc config Themes start=disabled
 sc config Spooler start=disabled
+sc config RtkAudioUniversalService start=disabled
+sc config XboxGipSvc start=disabled
+sc config vmicvss start=disabled
+sc config WalletService start=disabled
+sc config Fax start=disabled
 
 :: Scheduled Task
 schtasks /Change /tN "Microsoft\Windows\AppID\SmartScreenSpecific" /disable
@@ -778,6 +788,7 @@ taskkill /f /im dwm.exe
 start dwm.exe
 start explorer.exe
 pause
+
 
 
 
