@@ -66,6 +66,7 @@ sc stop DusmSvc
 sc stop BthAvctpSvc
 sc stop BITS
 sc stop DPS
+sc stop Themes
 
 :: Services Disable
 sc config EventLog start=disabled
@@ -116,6 +117,7 @@ sc config BthAvctpSvc start=disabled
 sc config BITS start=demand
 sc config DPS start=disabled
 sc config nlasvc depend=NSI/RpcSs/TcpIp/Dhcp
+sc config Themes start=disabled
 
 :: Scheduled Task
 schtasks /Change /tN "Microsoft\Windows\AppID\SmartScreenSpecific" /disable
@@ -774,4 +776,5 @@ taskkill /f /im dwm.exe
 start dwm.exe
 start explorer.exe
 pause
+
 
