@@ -68,53 +68,53 @@ sc stop BITS
 sc stop DPS
 
 :: Services Disable
-sc config EventLog start= disabled
-sc config DiagTrack start= disabled
-sc config diagnosticshub.standardcollector.service start= disabled
-sc config dmwappushservice start= disabled
-sc config RemoteRegistry start= disabled
-sc config TrkWks start= disabled
-sc config WMPNetworkSvc start= disabled
-sc config SysMain start= disabled
-sc config wuauserv start= disabled
-sc config lmhosts start= disabled
-sc config VSS start= disabled
-sc config RemoteAccess start= disabled
-sc config WSearch start= disabled
-sc config iphlpsvc start= disabled
-sc config DoSvc start= disabled
+sc config EventLog start=disabled
+sc config DiagTrack start=disabled
+sc config diagnosticshub.standardcollector.service start=disabled
+sc config dmwappushservice start=disabled
+sc config RemoteRegistry start=disabled
+sc config TrkWks start=disabled
+sc config WMPNetworkSvc start=disabled
+sc config SysMain start=disabled
+sc config wuauserv start=disabled
+sc config lmhosts start=disabled
+sc config VSS start=disabled
+sc config RemoteAccess start=disabled
+sc config WSearch start=disabled
+sc config iphlpsvc start=disabled
+sc config DoSvc start=disabled
 sc config ClickToRunSvc start= demand
-sc config SEMgrSvc start= disabled
-sc config BDESVC start= disabled
-sc config TabletInputService start= disabled
-sc config SstpSvc start= disabled
-sc config NvTelemetryContainer start= disabled
-sc config HomeGroupListener start= disabled
-sc config HomeGroupProvider start= disabled
-sc config lfsvc start= disabled
-sc config MapsBroke start= disabled
-sc config NetTcpPortSharing start= disabled
-sc config SharedAccess start= disabled
-sc config WbioSrvc start= disabled
-sc config WMPNetworkSvc start= disabled
-sc config wisvc start= disabled
-sc config TapiSrv start= disabled
-sc config SmsRouter start= disabled
-sc config SharedRealitySvc start= disabled
-sc config ScDeviceEnum start= disabled
-sc config SCardSvr start= disabled
-sc config RetailDemo start= disabled
-sc config PhoneSvc start= disabled
-sc config perceptionsimulation start= disabled
-sc config BTAGService start= disabled
-sc config AJRouter start= disabled
-sc config CDPSvc start= disabled
-sc config ShellHWDetection start= disabled
-sc config RstMwService start= disabled
-sc config DusmSvc start= disabled
-sc config BthAvctpSvc start= disabled
-sc config BITS start= demand
-sc config DPS start= disabled
+sc config SEMgrSvc start=disabled
+sc config BDESVC start=disabled
+sc config TabletInputService start=disabled
+sc config SstpSvc start=disabled
+sc config NvTelemetryContainer start=disabled
+sc config HomeGroupListener start=disabled
+sc config HomeGroupProvider start=disabled
+sc config lfsvc start=disabled
+sc config MapsBroke start=disabled
+sc config NetTcpPortSharing start=disabled
+sc config SharedAccess start=disabled
+sc config WbioSrvc start=disabled
+sc config WMPNetworkSvc start=disabled
+sc config wisvc start=disabled
+sc config TapiSrv start=disabled
+sc config SmsRouter start=disabled
+sc config SharedRealitySvc start=disabled
+sc config ScDeviceEnum start=disabled
+sc config SCardSvr start=disabled
+sc config RetailDemo start=disabled
+sc config PhoneSvc start=disabled
+sc config perceptionsimulation start=disabled
+sc config BTAGService start=disabled
+sc config AJRouter start=disabled
+sc config CDPSvc start=disabled
+sc config ShellHWDetection start=disabled
+sc config RstMwService start=disabled
+sc config DusmSvc start=disabled
+sc config BthAvctpSvc start=disabled
+sc config BITS start=demand
+sc config DPS start=disabled
 sc config nlasvc depend=NSI/RpcSs/TcpIp/Dhcp
 
 :: Scheduled Task
@@ -143,7 +143,7 @@ schtasks /Change /tN "Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDia
 schtasks /Change /tN "Microsoft\Windows\FileHistory\File History (maintenance mode)" /disable
 schtasks /Change /tN "Microsoft\Windows\Maintenance\WinSAT" /disable
 schtasks /Change /tN "Microsoft\Windows\CloudExperienceHost\CreateObjectTask" /disable
-schtasks /Change /tN "Microsoft\Windows\DiskFootprint\Diagnostics" /disable *** Not sure if should be disabled, maybe related to S.M.A.R.T.
+schtasks /Change /tN "Microsoft\Windows\DiskFootprint\Diagnostics" /disable *** Not sure if should bedisabled, maybe related to S.M.A.R.T.
 schtasks /Change /tN "Microsoft\Windows\NetTrace\GatherNetworkInfo" /disable
 schtasks /Change /tN "Microsoft\Windows\PI\Sqm-Tasks" /disable
 schtasks /Change /tN "Microsoft\Windows\Time Synchronization\ForceSynchronizeTime" /disable
@@ -215,7 +215,7 @@ fsutil behavior set memoryusage 2
 fsutil behavior set mftzone 4
 
 :: Notify
-fsutil behavior set disabledeletenotify 0
+fsutil behavior setdisabledeletenotify 0
 
 :: Encrypt Paging File
 fsutil behavior set encryptpagingfile 0
@@ -457,7 +457,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Dwm" /v "OverlayTestMode" /t REG_SZ /d 
 
 :: Bcdedit
 bcdedit /set useplatformtick yes
-bcdedit /set disabledynamictick yes
+bcdedit /setdisabledynamictick yes
 bcdedit /set tscsyncpolicy enhanced
 bcdedit /deletevalue useplatformclock
 
@@ -774,3 +774,4 @@ taskkill /f /im dwm.exe
 start dwm.exe
 start explorer.exe
 pause
+
