@@ -352,7 +352,7 @@ REG ADD "HKCU\Software\Policies\Microsoft\Windows\Control Panel\Desktop" /v "Scr
 
 :: SmartScreen
 REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "EnableSmartScreen" /t REG_DWORD /d "0" /f
-REG DELETE "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "ShellSmartScreenLevel" /f
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "ShellSmartScreenLevel" /t REG_SZ /d "-" /f
 
 :: Show file extensions in Explorer
 REG ADD "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "HideFileExt" /t  REG_DWORD /d "0" /f
@@ -789,4 +789,5 @@ taskkill /f /im dwm.exe
 start dwm.exe
 start explorer.exe
 pause
+
 
