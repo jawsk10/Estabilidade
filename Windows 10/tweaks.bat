@@ -334,6 +334,12 @@ REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /v "AllowgameDVR" /t 
 REG ADD "HKCU\Software\Microsoft\GameBar" /v "AllowAutoGameMode" /t REG_DWORD /d "0" /f
 REG ADD "HKCU\Software\Microsoft\GameBar" /v "AutoGameModeEnabled" /t REG_DWORD /d "0" /f
 
+:: Game Presence Writer
+takeown /f "%WinDir%\System32\GameBarPresenceWriter.exe" /a
+icacls "%WinDir%\System32\GameBarPresenceWriter.exe" /grant:r Todos:F /c
+taskkill /im GameBarPresenceWriter.exe /f
+del "%WinDir%\System32\GameBarPresenceWriter.exe"
+
 :: User Account Control
 REG ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "PromptOnSecureDesktop" /t REG_DWORD /d "0" /f
 REG ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableLUA" /t REG_DWORD /d "1" /f
@@ -789,5 +795,6 @@ taskkill /f /im dwm.exe
 start dwm.exe
 start explorer.exe
 pause
+
 
 
