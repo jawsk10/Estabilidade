@@ -1,0 +1,27 @@
+USB Phy Power Down -> Disabled
+XHCI Hand-off  -> Disabled
+Legacy USB Support -> Disabled
+USB Mass Storage Driver Support -> Disabled
+SMT Mode -> Disabled
+TSME -> Disabled
+SMEE -> Disabled
+IOMMU -> Disabled
+CC6 memory region encryption -> Disabled
+NX Mode -> Disabled
+LCLK DPM -> Disabled
+S3/Modern Standby Support -> Disabled
+S3 -> Disabled
+SVM Mode -> Disabled
+Chipset Power Saving Features -> Disabled
+AMD Cool&Quiet function -> Disabled
+C6 Mode -> Disabled
+DF Cstates -> Disabled
+Global C-state Control -> Disabled
+SB Clock Spread Spectrum -> Disabled
+PSPP Policy -> Perfomace
+Gear Down Mode -> Disabled
+Power Down Enable -> Disabled
+Enable Hibernation -> Disabled
+USB 2.0 Controller Mode -> FullSpeed
+Spread Spectrum Control -> Disabled
+LN2 Mode -> Disabled
