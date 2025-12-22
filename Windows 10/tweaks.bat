@@ -421,6 +421,22 @@ POWERSHELL Disable-WindowsOptionalFeature -Online -FeatureName Printing-PrintToP
 POWERSHELL Disable-WindowsOptionalFeature -Online -FeatureName FaxServicesClientPackage -NoRestart
 POWERSHELL Disable-WindowsOptionalFeature -Online -FeatureName Printing-XPSServices-Features -NoRestart
 
+:: Resources Windows
+Dism /online /Disable-Feature /FeatureName:Windows-Defender-Default-Definitions -NoRestart
+Dism /online /Disable-Feature /FeatureName:SearchEngine-Client-Package -NoRestart
+Dism /online /Disable-Feature /FeatureName:WorkFolders-Client -NoRestart
+Dism /online /Disable-Feature /FeatureName:MSRDC-Infrastructure -NoRestart
+Dism /online /Disable-Feature /FeatureName:Printing-Foundation-Features -NoRestart
+Dism /online /Disable-Feature /FeatureName:Printing-Foundation-InternetPrinting-Client -NoRestart
+Dism /online /Disable-Feature /FeatureName:SmbDirect -NoRestart
+Dism /online /Disable-Feature /FeatureName:Internet-Explorer-Optional-amd64 -NoRestart
+Dism /online /Disable-Feature /FeatureName:NetFx4-AdvSrvs -NoRestart
+Dism /online /Disable-Feature /FeatureName:NetFx3 -NoRestart
+Dism /online /Disable-Feature /FeatureName:WindowsMediaPlayer -NoRestart
+Dism /online /Disable-Feature /FeatureName:MediaPlayback -NoRestart
+Dism /online /Enable-Feature /FeatureName:LegacyComponents -NoRestart
+Dism /online /Enable-Feature /FeatureName:DirectPlay -NoRestart
+
 :: Advertisements
 REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SilentInstalledAppsEnabled" /t REG_DWORD /d "0" /f
 REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SystemPaneSuggestionsEnabled" /t REG_DWORD /d "0" /f
@@ -819,6 +835,7 @@ taskkill /f /im dwm.exe
 start dwm.exe
 start explorer.exe
 pause
+
 
 
 
