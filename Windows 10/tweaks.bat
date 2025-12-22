@@ -416,6 +416,11 @@ REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Search" /v "AllowCorpora
 :: Automatic Driver Updates
 REG ADD "HKLM\SOFTWARE\Policies\Microsoft\WindowsStore" /v "LetAppsRInBackground" /t REG_DWORD /d "2" /f
 
+:: Printers
+POWERSHELL Disable-WindowsOptionalFeature -Online -FeatureName Printing-PrintToPDFServices-Features -NoRestart
+POWERSHELL Disable-WindowsOptionalFeature -Online -FeatureName FaxServicesClientPackage -NoRestart
+POWERSHELL Disable-WindowsOptionalFeature -Online -FeatureName Printing-XPSServices-Features -NoRestart
+
 :: Advertisements
 REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SilentInstalledAppsEnabled" /t REG_DWORD /d "0" /f
 REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "SystemPaneSuggestionsEnabled" /t REG_DWORD /d "0" /f
@@ -814,6 +819,7 @@ taskkill /f /im dwm.exe
 start dwm.exe
 start explorer.exe
 pause
+
 
 
 
