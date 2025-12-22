@@ -347,6 +347,12 @@ icacls "%WinDir%\System32\GameBarPresenceWriter.exe" /grant:r Todos:F /c
 taskkill /im GameBarPresenceWriter.exe /f
 del "%WinDir%\System32\GameBarPresenceWriter.exe"
 
+:: Game Panel
+takeown /f "%WinDir%\System32\GamePanel.exe" /a
+icacls "%WinDir%\System32\GamePanel.exe" /grant:r Todos:F /c
+taskkill /im GamePanel.exe /f
+del "%WinDir%\System32\GamePanel.exe"
+
 :: Mob Sync
 takeown /f "%WinDir%\System32\mobsync.exe" /a
 icacls "%WinDir%\System32\mobsync.exe" /grant:r Todos:F /c
@@ -808,6 +814,7 @@ taskkill /f /im dwm.exe
 start dwm.exe
 start explorer.exe
 pause
+
 
 
 
