@@ -336,7 +336,7 @@ REG ADD "HKCU\Software\Microsoft\GameBar" /v "AutoGameModeEnabled" /t REG_DWORD 
 
 :: Game Presence Writer
 takeown /f "%WinDir%\System32\GameBarPresenceWriter.exe" /a
-icacls "%WinDir%\System32\GameBarPresenceWriter.exe" /grant:r Todos:F /c
+icacls "%WinDir%\System32\GameBarPresenceWriter.exe" /grant:r Administradors:F /c
 taskkill /im GameBarPresenceWriter.exe /f
 del "%WinDir%\System32\GameBarPresenceWriter.exe"
 
@@ -795,6 +795,7 @@ taskkill /f /im dwm.exe
 start dwm.exe
 start explorer.exe
 pause
+
 
 
 
