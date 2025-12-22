@@ -70,6 +70,9 @@ sc stop Themes
 sc stop Spooler
 sc stop RtkAudioUniversalService
 sc stop XboxGipSvc
+sc stop XboxNetApiSvc
+sc stop XblGameSave
+sc stop XblAuthManager
 sc stop vmicvss
 sc stop WalletService
 sc stop Fax
@@ -127,6 +130,9 @@ sc config Themes start=disabled
 sc config Spooler start=disabled
 sc config RtkAudioUniversalService start=disabled
 sc config XboxGipSvc start=disabled
+sc config XboxNetApiSvc start=disabled
+sc config XblGameSave start=disabled
+sc config XblAuthManager start=disabled
 sc config vmicvss start=disabled
 sc config WalletService start=disabled
 sc config Fax start=disabled
@@ -795,6 +801,7 @@ taskkill /f /im dwm.exe
 start dwm.exe
 start explorer.exe
 pause
+
 
 
 
