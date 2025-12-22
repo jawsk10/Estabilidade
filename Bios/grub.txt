@@ -1,0 +1,311 @@
+Setup Question	= USB Phy Power Down
+Help String	= Support for S4/S5 USB PHY Power Down
+Token	=244	// Do NOT change this line
+Offset	=C3
+Width	=01
+BIOS Default	=[FF]Auto 
+Options	=*[00]Disabled	// Move "*" to the desired Option
+         [01]Enabled
+         [FF]Auto
+
+Setup Question	= USB 2.0 Controller Mode
+Help String	= Configures the USB 2.0 controller in HiSpeed (480Mbps) or FullSpeed (12Mbps).
+Token	=172	// Do NOT change this line
+Offset	=2E
+Width	=01
+BIOS Default	=[01]HiSpeed 
+Options	=[01]HiSpeed	// Move "*" to the desired Option
+         *[00]FullSpeed
+
+Setup Question	= XHCI Hand-off
+Help String	= This is a workaround for OSes without XHCI hand-off support. The XHCI ownership change should be claimed by XHCI driver.
+Token	=174	// Do NOT change this line
+Offset	=2B
+Width	=01
+BIOS Default	=[01]Enabled 
+Options	=[01]Enabled	// Move "*" to the desired Option
+         *[00]Disabled
+
+Setup Question	= Legacy USB Support
+Help String	= Enables Legacy USB support. AUTO option disables legacy support if no USB devices are connected. DISABLE option will keep USB devices available only for EFI applications.
+Token	=171	// Do NOT change this line
+Offset	=01
+Width	=01
+BIOS Default	=[00]Enabled 
+Options	=[00]Enabled	// Move "*" to the desired Option
+         *[01]Disabled
+         [02]Auto
+
+Setup Question	= USB Mass Storage Driver Support
+Help String	= Enable/Disable USB Mass Storage Driver Support.
+Token	=176	// Do NOT change this line
+Offset	=2F
+Width	=01
+BIOS Default	=[01]Enabled 
+Options	=*[00]Disabled	// Move "*" to the desired Option
+         [01]Enabled
+
+Setup Question	= SMT Mode
+Help String	= Enable/Disable SMT.
+Token	=3A	// Do NOT change this line
+Offset	=153
+Width	=01
+BIOS Default	=[01]Auto 
+Options	=*[00]Disabled	// Move "*" to the desired Option
+         [01]Auto
+
+Setup Question	= SMEE
+Help String	= Control secure memory encryption enable
+Token	=16	// Do NOT change this line
+Offset	=234
+Width	=01
+Options	=*[00]Disable	// Move "*" to the desired Option
+         [01]Enable
+         [03]Auto
+
+Setup Question	= TSME
+Help String	= Transparent SME: AddrTweakEn = 1; ForceEncrEn =1; DataEncrEn = 0
+Token	=7026	// Do NOT change this line
+Offset	=11D
+Width	=01
+Options	=*[00]Disabled	// Move "*" to the desired Option
+         [01]Enabled
+         [FF]Auto
+
+Setup Question	= IOMMU
+Help String	= Enable/Disable IOMMU Support
+Token	=1A3	// Do NOT change this line
+Offset	=273
+Width	=01
+BIOS Default	=[0F]Auto 
+Options	=[0F]Auto	// Move "*" to the desired Option
+         *[00]Disabled
+         [01]Enabled
+
+Setup Question	= CC6 memory region encryption
+Help String	= Control whether or not the CC6 save/restore memory is encrypted
+Token	=3D	// Do NOT change this line
+Offset	=B2
+Width	=01
+Options	=*[00]Disabled	// Move "*" to the desired Option
+         [01]Enabled
+         [03]Auto
+
+Setup Question	= NX Mode
+Help String	= Enable/disable No-execute page protection Function
+Token	=28	// Do NOT change this line
+Offset	=14B
+Width	=01
+BIOS Default	=[01]Enabled 
+Options	=*[00]Disabled	// Move "*" to the desired Option
+         [01]Enabled
+
+Setup Question	= LCLK DPM
+Help String	= LCLK Power Management. Auto = Enabled. Enabled = Automatically lower LCLK frequency to save power. Disabled = Fixed LCLK.
+Token	=B1	// Do NOT change this line
+Offset	=239
+Width	=01
+Options	=[00]Auto	// Move "*" to the desired Option
+         [01]Enabled 
+         *[02]Disabled
+
+Setup Question	= S3/Modern Standby Support
+Help String	= Switch S3/Modern Standby. It may be disabled in OS by Down Core or Disable SMT when S3 is enabled.
+Token	=7DB	// Do NOT change this line
+Offset	=16
+Width	=01
+Options	=*[00]Disabled	// Move "*" to the desired Option
+         [01]Modern Standby Enable
+         [03]S3 Enable
+
+Setup Question	= D3 Cold Support
+Help String	= No help string
+Token	=1F6	// Do NOT change this line
+Offset	=1D4
+Width	=01
+Options	=*[00]Disabled	// Move "*" to the desired Option
+         [01]Enabled
+         [0F]Auto
+
+Setup Question	= ACPI Sleep State
+Help String	= Select the highest ACPI sleep state the system will enter when the SUSPEND button is pressed.
+Token	=129	// Do NOT change this line
+Offset	=49
+Width	=02
+BIOS Default	=[02]S3 (Suspend to RAM) 
+Options	=*[00]Suspend Disabled	// Move "*" to the desired Option
+         [02]S3 (Suspend to RAM)
+
+Setup Question	= ACPI _CST C1 Declaration
+Help String	= Determines whether or not to declare the C1 state to the OS.
+Token	=20	// Do NOT change this line
+Offset	=30
+Width	=01
+Options	=*[00]Disabled	// Move "*" to the desired Option
+         [01]Enabled
+         [03]Auto
+
+Setup Question	= APP Center Download & Install
+Help String	= APP Center Download & Install
+Token	=198	// Do NOT change this line
+Offset	=266
+Width	=01
+BIOS Default	=[01]Enabled 
+Options	=*[00]Disabled	// Move "*" to the desired Option
+         [01]Enabled
+
+Setup Question	= RGB Fusion
+Help String	= Onboard RGB Fusion mode
+Token	=1A1	// Do NOT change this line
+Offset	=26B
+Width	=01
+BIOS Default	=[03]Static Mode 
+Options	=*[00]Off	// Move "*" to the desired Option
+         [01]Pulse Mode
+         [02]Color Cycle
+         [03]Static Mode
+         [04]Flash Mode
+         [05]Double Flash
+         [06]Demo Mode
+
+Setup Question	= SVM Mode
+Help String	= Enable/Disable CPU Virtualization.
+Token	=29	// Do NOT change this line
+Offset	=14C
+Width	=01
+BIOS Default	=[00]Disabled 
+Options	=[00]Disabled	// Move "*" to the desired Option
+         *[01]Enabled
+
+Setup Question	= SVM Mode
+Help String	= Enable/Disable CPU Virtualization.
+Token	=16D	// Do NOT change this line
+Offset	=23B
+Width	=01
+BIOS Default	=[01]Enabled 
+Options	=[00]Disabled	// Move "*" to the desired Option
+         *[01]Enabled
+
+Setup Question	= AMD Cool&Quiet function
+Help String	= Enable/Disable AMD Cool&Quiet function.
+Token	=27	// Do NOT change this line
+Offset	=14A
+Width	=01
+BIOS Default	=[01]Enabled 
+Options	=*[00]Disabled	// Move "*" to the desired Option
+         [01]Enabled
+
+Setup Question	= Chipset Power Saving Features
+Help String	= Chipset Power Saving Features
+Token	=23E	// Do NOT change this line
+Offset	=BE
+Width	=01
+BIOS Default	=[01]Enabled 
+Options	=*[00]Disabled	// Move "*" to the desired Option
+         [01]Enabled
+
+Setup Question	= C6 Mode
+Help String	= Enable/Disable C6.
+Token	=32	// Do NOT change this line
+Offset	=14D
+Width	=01
+BIOS Default	=[01]Enabled 
+Options	=*[00]Disabled	// Move "*" to the desired Option
+         [01]Enabled
+
+Setup Question	= DF Cstates
+Help String	= Enable = Enable DF C-states  Disable = Disable DF C-states
+Token	=7032	// Do NOT change this line
+Offset	=17F
+Width	=01
+Options	=*[00]Disabled	// Move "*" to the desired Option
+         [01]Enabled
+         [0F]Auto
+
+Setup Question	= Global C-state Control
+Help String	= Controls IO based C-state generation and DF C-states.
+Token	=33	// Do NOT change this line
+Offset	=14E
+Width	=01
+BIOS Default	=[03]Auto 
+Options	=*[00]Disabled	// Move "*" to the desired Option
+         [01]Enabled
+         [03]Auto
+
+Setup Question	= SB Clock Spread Spectrum
+Help String	= Enable/Disable CG1_PLL Spread Spectrum
+Token	=23F	// Do NOT change this line
+Offset	=BF
+Width	=01
+BIOS Default	=[FF]Auto 
+Options	=*[00]Disabled	// Move "*" to the desired Option
+         [01]Enabled
+         [FF]Auto
+
+Setup Question	= PSPP Policy
+Help String	= PCIe Speed Power Policy
+Token	=254	// Do NOT change this line
+Offset	=260
+Width	=01
+BIOS Default	=[FF]Auto 
+Options	=[00]Disabled	// Move "*" to the desired Option
+         *[01]Performance
+         [02]Balanced-High
+         [03]Balanced-Low
+         [04]Power Saving
+         [FF]Auto
+
+Setup Question	= Gear Down Mode
+Help String	= No help string
+Token	=7C	// Do NOT change this line
+Offset	=77
+Width	=01
+Options	=*[00]Disabled	// Move "*" to the desired Option
+         [01]Enabled 
+         [FF]Auto
+
+Setup Question	= Gear Down Mode
+Help String	= No help string
+Token	=9A	// Do NOT change this line
+Offset	=102
+Width	=01
+Options	=*[00]Disabled	// Move "*" to the desired Option
+         [01]Enabled
+         [FF]Auto
+
+Setup Question	= Gear Down Mode
+Help String	= No help string
+Token	=63	// Do NOT change this line
+Offset	=166
+Width	=01
+BIOS Default	=[FF]Auto 
+Options	=*[00]Disabled	// Move "*" to the desired Option
+         [01]Enabled
+         [FF]Auto
+
+Setup Question	= Power Down Enable
+Help String	= Enable or disable DDR power down mode
+Token	=9B	// Do NOT change this line
+Offset	=103
+Width	=01
+Options	=*[00]Disabled	// Move "*" to the desired Option
+         [01]Enabled
+         [FF]Auto
+
+Setup Question	= Power Down Enable
+Help String	= Enable or disable DDR power down mode
+Token	=41	// Do NOT change this line
+Offset	=79
+Width	=01
+Options	=*[00]Disabled	// Move "*" to the desired Option
+         [01]Enabled 
+         [FF]Auto
+
+Setup Question	= Enable Hibernation
+Help String	= Enables or Disables System ability to Hibernate (OS/S4 Sleep State). This option may not be effective with some operating systems.
+Token	=128	// Do NOT change this line
+Offset	=4B
+Width	=01
+BIOS Default	=1 
+Value	=0	// Enabled = 1, Disabled = 0
+
