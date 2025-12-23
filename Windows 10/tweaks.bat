@@ -823,6 +823,7 @@ REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorE
 
 :: VBS
 REG ADD "HKLM\System\CurrentControlSet\Control\DeviceGuard" /v "EnableVirtualizationBasedSecurity" /d "1" /t REG_DWORD /f
+REG ADD "HKLM\System\CurrentControlSet\Control\DeviceGuard" /v "RequirePlatformSecurityFeatures" /d "1" /t REG_DWORD /f
 
 :: Disable power saving for every device
 POWERSHELL "Get-WmiObject MSPower_DeviceEnable -Namespace root\wmi | ForEach-Object { $_.enable = $false; $_.psbase.put(); }"
@@ -833,6 +834,7 @@ taskkill /f /im dwm.exe
 start dwm.exe
 start explorer.exe
 pause
+
 
 
 
