@@ -66,7 +66,6 @@ sc stop DusmSvc
 sc stop BthAvctpSvc
 sc stop BITS
 sc stop DPS
-sc stop Themes
 sc stop Spooler
 sc stop RtkAudioUniversalService
 sc stop XboxGipSvc
@@ -126,7 +125,6 @@ sc config BthAvctpSvc start=disabled
 sc config BITS start=demand
 sc config DPS start=disabled
 sc config nlasvc depend=NSI/RpcSs/TcpIp/Dhcp
-sc config Themes start=disabled
 sc config Spooler start=disabled
 sc config RtkAudioUniversalService start=disabled
 sc config XboxGipSvc start=disabled
@@ -835,6 +833,7 @@ taskkill /f /im dwm.exe
 start dwm.exe
 start explorer.exe
 pause
+
 
 
 
