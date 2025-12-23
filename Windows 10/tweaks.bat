@@ -614,15 +614,6 @@ powercfg /SETDCVALUEINDEX SCHEME_CURRENT 54533251-82be-4824-96c1-47b60b740d00 4d
 powercfg /SETDCVALUEINDEX SCHEME_CURRENT 54533251-82be-4824-96c1-47b60b740d00 4b92d758-5a24-4851-a470-815d78aee119 100
 powercfg /SETDCVALUEINDEX SCHEME_CURRENT 54533251-82be-4824-96c1-47b60b740d00 7b224883-b3cc-4d79-819f-8374152cbe7c 100
 
-:: Install .NET Framework 3.5
-Dism /online /norestart /Enable-Feature /featureName:"NetFx3"
-
-:: Install Legacy Component
-Dism /online /norestart /Enable-Feature /featureName:"LegacyComponents"
-
-:: Install DirectPlay
-Dism /online /norestart /Enable-Feature /featureName:"DirectPlay"
-
 :: Dark Mode Windows Win32
 REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\DWM" /v "ColorPrevalence" /t REG_DWORD /d "0" /f
 REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\SOFTWARE\Microsoft\Windows\DWM" /v "AccentColor" /t REG_DWORD /d "0" /f
@@ -832,3 +823,4 @@ taskkill /f /im dwm.exe
 start dwm.exe
 start explorer.exe
 pause
+
