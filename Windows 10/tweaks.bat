@@ -161,13 +161,13 @@ schtasks /Change /tN "Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDia
 schtasks /Change /tN "Microsoft\Windows\FileHistory\File History (maintenance mode)" /disable
 schtasks /Change /tN "Microsoft\Windows\Maintenance\WinSAT" /disable
 schtasks /Change /tN "Microsoft\Windows\CloudExperienceHost\CreateObjectTask" /disable
-schtasks /Change /tN "Microsoft\Windows\DiskFootprint\Diagnostics" /disable *** Not sure if should bedisabled, maybe related to S.M.A.R.T.
+schtasks /Change /tN "Microsoft\Windows\DiskFootprint\Diagnostics" /disable *** Not sure if should be disabled, maybe related to S.M.A.R.T.
 schtasks /Change /tN "Microsoft\Windows\NetTrace\GatherNetworkInfo" /disable
 schtasks /Change /tN "Microsoft\Windows\PI\Sqm-Tasks" /disable
 schtasks /Change /tN "Microsoft\Windows\Time Synchronization\ForceSynchronizeTime" /disable
 schtasks /Change /tN "Microsoft\Windows\Time Synchronization\SynchronizeTime" /disable
 schtasks /Change /tN "Microsoft\Windows\Windows Error Reporting\QueueReporting" /disable
-schtasks /Change /tN "Microsoft\XblGameSave\XblGameSaveTask" /Disable
+schtasks /Change /tN "Microsoft\XblGameSave\XblGameSaveTask" /disable
 
 :: Adapter
 for /f %%i in ('wmic path win32_networkadapter get GUID ^| findstr "{"') do REG ADD "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\%%i" /v TcpAckFrequency /t REG_DWORD /d 1 /f
@@ -249,7 +249,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection"
 REG ADD "HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d "0" /f
 REG ADD "HKLM\SOFTWARE\Policies\Microsoft\MRT" /v "DontOfferThroughWUAU" /t REG_DWORD /d "1" /f
 REG ADD "HKLM\SOFTWARE\Policies\Microsoft\SQMClient\Windows" /v "CEIPEnable" /t REG_DWORD /d "0" /f
-REG ADD "HKLM\Software\Microsoft\SQMClient\Windows /v "CEIPEnable" /d "0" /t REG_DWORD /f
+REG ADD "HKLM\Software\Microsoft\SQMClient\Windows" /v "CEIPEnable" /d "0" /t REG_DWORD /f
 REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat" /v "AITEnable" /t REG_DWORD /d "0" /f
 REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat" /v "DisableUAR" /t REG_DWORD /d "1" /f
 REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d "0" /f
@@ -387,7 +387,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ReserveManager" /v "Ship
 REG ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Settings" /v "DownloadMode" /t REG_SZ /d "0" /f
 
 :: Location
-REG ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" /v "Value" /t REG_SZ /d Deny /f
+REG ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\Location" /v "Value" /t REG_SZ /d Deny /f
 
 :: Notifications about files downloaded from the Internet
 REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Environment" /v "SEE_MASK_NOZONECHECKS" /t REG_SZ /d "1" /f
@@ -528,7 +528,7 @@ REG ADD "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management
 REG ADD "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverrideMask" /t REG_DWORD /d "3" /f
 
 :: Initialization Delay
-REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Serialize" /v "Startupdelayinmsec" /t REG_DWORD /d "0" /f
+REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Serialize" /v "StartupDelayInMSec" /t REG_DWORD /d "0" /f
 
 :: Fast startup
 REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v "HiberbootEnabled" /t REG_DWORD /d "0" /f
@@ -823,4 +823,3 @@ taskkill /f /im dwm.exe
 start dwm.exe
 start explorer.exe
 pause
-
