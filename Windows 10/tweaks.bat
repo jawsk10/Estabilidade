@@ -234,7 +234,7 @@ fsutil behavior set memoryusage 2
 fsutil behavior set mftzone 4
 
 :: Notify
-fsutil behavior setdisabledeletenotify 0
+fsutil behavior set disabledeletenotify 0
 
 :: Encrypt Paging File
 fsutil behavior set encryptpagingfile 0
@@ -823,6 +823,7 @@ taskkill /f /im dwm.exe
 start dwm.exe
 start explorer.exe
 pause
+
 
 
 
