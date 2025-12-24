@@ -6,6 +6,8 @@ SMT Mode -> Disabled
 TSME -> Disabled
 SMEE -> Disabled
 IOMMU -> Disabled
+DMA Protection -> Disabled
+DMAr Support -> Disabled
 CC6 memory region encryption -> Disabled
 NX Mode -> Disabled
 LCLK DPM -> Disabled
