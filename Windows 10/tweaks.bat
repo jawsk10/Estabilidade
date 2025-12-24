@@ -519,8 +519,6 @@ REG ADD "HKLM\SOFTWARE\Microsoft\Windows\Dwm" /v "OverlayTestMode" /t REG_SZ /d 
 
 :: Bcdedit
 bcdedit /set useplatformtick yes
-bcdedit /setdisabledynamictick yes
-bcdedit /deletevalue useplatformclock
 
 :: Spectre & Meltdown
 REG ADD "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettings" /t REG_DWORD /d "0" /f
@@ -823,5 +821,6 @@ taskkill /f /im dwm.exe
 start dwm.exe
 start explorer.exe
 pause
+
 
 
