@@ -594,7 +594,7 @@ REG ADD "HKCU\SOFTWARE\Microsoft\Windows\DWM" /v "DisablePreviewDesktop" /t REG_
 REG ADD "HKCU\SOFTWARE\Microsoft\Windows\DWM" /v "AlwaysHibernateThumbnails" /t REG_DWORD /d "1" /f
 
 :: Power Efficiency
-REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "CoalesecingTimerinterval" /t REG_SZ /d "0" /f
+REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "CoalesecingTimerinterval" /t REG_DWORD /d "0" /f
 
 :: Power Plan
 :: Ultimate Performace
@@ -823,6 +823,7 @@ taskkill /f /im dwm.exe
 start dwm.exe
 start explorer.exe
 pause
+
 
 
 
