@@ -75,6 +75,7 @@ sc stop XblAuthManager
 sc stop vmicvss
 sc stop WalletService
 sc stop Fax
+sc stop GraphicsPerfSvc
 
 :: Services Disable
 sc config EventLog start=disabled
@@ -134,6 +135,7 @@ sc config XblAuthManager start=disabled
 sc config vmicvss start=disabled
 sc config WalletService start=disabled
 sc config Fax start=disabled
+sc config GraphicsPerfSvcstart=disabled
 
 :: Scheduled Task
 schtasks /Change /tN "Microsoft\Windows\AppID\SmartScreenSpecific" /disable
@@ -823,4 +825,5 @@ taskkill /f /im dwm.exe
 start dwm.exe
 start explorer.exe
 pause
+
 
