@@ -20,7 +20,7 @@ C6 Mode -> Disabled
 DF Cstates -> Disabled
 Global C-state Control -> Disabled
 SB Clock Spread Spectrum -> Disabled
-PSPP Policy -> Perfomace
+PSPP Policy -> Performance
 Gear Down Mode -> Disabled
 Power Down Enable -> Disabled
 Enable Hibernation -> Disabled
@@ -28,3 +28,4 @@ USB 2.0 Controller Mode -> FullSpeed
 Spread Spectrum Control -> Disabled
 LN2 Mode -> Disabled
 High Precision Event Timer -> Disabled
+
