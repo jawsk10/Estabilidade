@@ -1,5 +1,4 @@
 :: Desative mesmo as opções duplicadas
-
 USB Phy Power Down -> Disabled
 XHCI Hand-off  -> Disabled
 Legacy USB Support -> Disabled
@@ -31,3 +30,4 @@ Spread Spectrum Control -> Disabled
 LN2 Mode -> Disabled
 High Precision Event Timer -> Disabled
 DRAM Latency Enhance -> Enabled
+
