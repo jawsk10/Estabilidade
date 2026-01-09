@@ -12,6 +12,7 @@ DMAr Support -> Disabled
 CC6 memory region encryption -> Disabled
 NX Mode -> Disabled
 LCLK DPM -> Disabled
+LCLK DPM Enhanced PCIe Detection -> Disabled
 S3/Modern Standby Support -> Disabled
 S3 -> Disabled
 SVM Mode -> Disabled
@@ -30,3 +31,4 @@ Spread Spectrum Control -> Disabled
 LN2 Mode -> Disabled
 High Precision Event Timer -> Disabled
 DRAM Latency Enhance -> Enabled
+2T/1T -> 1T
