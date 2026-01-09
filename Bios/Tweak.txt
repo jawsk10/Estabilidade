@@ -10,7 +10,7 @@ IOMMU -> Disabled
 DMA Protection -> Disabled
 DMAr Support -> Disabled
 CC6 memory region encryption -> Disabled
-NX Mode -> Disabled
+NX Mode -> Disabled :: Manter ativado em jogos com HVCI
 LCLK DPM -> Disabled
 LCLK DPM Enhanced PCIe Detection -> Disabled
 S3/Modern Standby Support -> Disabled
@@ -32,3 +32,4 @@ LN2 Mode -> Disabled
 High Precision Event Timer -> Disabled
 DRAM Latency Enhance -> Enabled
 2T/1T -> 1T
+
