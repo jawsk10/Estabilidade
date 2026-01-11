@@ -1,4 +1,3 @@
-:: Desative mesmo as opções duplicadas ::
 USB Phy Power Down -> Disabled
 XHCI Hand-off  -> Disabled
 Legacy USB Support -> Disabled
