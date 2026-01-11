@@ -1,2 +1,1 @@
-:: Desative todas as opções desnecessárias de mantê-las ativas ::
 RGB Fusion -> Off
