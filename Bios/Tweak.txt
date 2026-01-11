@@ -26,4 +26,5 @@ USB 2.0 Controller Mode -> FullSpeed
 Spread Spectrum Control -> Disabled
 LN2 Mode -> Disabled
 High Precision Event Timer -> Disabled
-2T/1T -> 1T
+SoC/Uncore OC Mode -> Enabled
+2T/1T -> 1T :: Testar
